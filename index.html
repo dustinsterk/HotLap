@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HotLap — Motorsport Lap Timer & Telemetry for Garmin</title>
+<meta name="description" content="Turn your Garmin watch into a motorsport lap timer and data logger: GPS lap timing, live delta-to-best, sector splits, G-force, track map, and a full activity you save to Garmin Connect. Free to try.">
+<!-- Put HotLap_hero.png and HotLap_icon_128_32bit_rgba.png in the same folder as this file. -->
+<link rel="icon" href="HotLap_icon_128_32bit_rgba.png">
+<style>
+  :root{
+    --bg:#0d0d0f; --panel:#16161a; --panel2:#1d1d22;
+    --text:#f2f2f4; --muted:#a0a0aa; --line:#2a2a30;
+    --orange:#ff8c00; --green:#39d353; --red:#ff5c5c;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--orange); text-decoration:none;}
+  .wrap{max-width:1040px; margin:0 auto; padding:0 20px;}
+  .btn{
+    display:inline-block; background:var(--orange); color:#111; font-weight:700;
+    padding:14px 26px; border-radius:10px; margin:6px 8px 6px 0;
+    transition:transform .08s ease, filter .15s ease;
+  }
+  .btn:hover{filter:brightness(1.08); transform:translateY(-1px);}
+  .btn.secondary{background:transparent; color:var(--text); border:1px solid var(--line);}
+
+  /* hero */
+  header.hero{
+    background:radial-gradient(1200px 500px at 20% 0%, #241608 0%, #0d0d0f 60%);
+    padding:34px 0 10px; text-align:center;
+  }
+  header.hero img.banner{max-width:100%; height:auto; border-radius:14px;}
+  .tagline{font-size:1.15rem; color:var(--muted); margin:18px 0 4px;}
+  .trial{color:var(--green); font-weight:600; margin:6px 0 20px;}
+  .cta{margin:10px 0 6px;}
+
+  section{padding:44px 0; border-top:1px solid var(--line);}
+  h2{font-size:1.5rem; margin:0 0 6px;}
+  .lead{color:var(--muted); margin:0 0 26px; max-width:70ch;}
+
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px;}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:18px 18px 16px;}
+  .card h3{margin:0 0 6px; font-size:1.05rem;}
+  .card p{margin:0; color:var(--muted); font-size:.95rem;}
+  .card .k{color:var(--orange); font-weight:700; font-size:.8rem; letter-spacing:.04em; text-transform:uppercase;}
+
+  .screens li{margin:0 0 10px; color:var(--muted);}
+  .screens li strong{color:var(--text);}
+
+  .price{display:flex; flex-wrap:wrap; align-items:center; gap:18px;}
+  .price .tag{font-size:2.6rem; font-weight:800; color:var(--text);}
+  .price .tag small{font-size:1rem; color:var(--muted); font-weight:500;}
+
+  .safety{background:var(--panel2); border:1px solid var(--line); border-radius:12px;
+          padding:16px 18px; color:var(--muted); font-size:.9rem;}
+
+  footer{padding:30px 0 50px; color:var(--muted); font-size:.85rem; text-align:center; border-top:1px solid var(--line);}
+  footer a{color:var(--muted); text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <img class="banner" src="HotLap_hero.png" alt="HotLap — Motorsport Track Day Lap Timer & Telemetry">
+    <p class="tagline">GPS lap timing, live delta-to-best, sectors, G-force &amp; full telemetry — on your wrist.</p>
+    <p class="trial">Free to try · 3 laps per session · one-time $6.99 unlock, no subscription</p>
+    <div class="cta">
+      <!-- Replace with your exact Connect IQ Store URL if different -->
+      <a class="btn" href="https://apps.garmin.com/apps/56d79f079a474e0db369765ae3ef2861">Get it on the Connect IQ Store</a>
+      <a class="btn secondary" href="#features">See what it does</a>
+    </div>
+  </div>
+</header>
+
+<section id="features">
+  <div class="wrap">
+    <h2>Built for the track — and the trail</h2>
+    <p class="lead">HotLap is a purpose-built lap timer and data logger for track days, HPDE, autocross,
+      karting, motorcycling and club racing — plus touring on snowmobile, ATV, boat, jet ski or trail.</p>
+    <div class="grid">
+      <div class="card"><div class="k">Lap timing</div><h3>Three ways to lap</h3><p>Position (start/finish line), Distance (auto every set distance), or Manual (tap). Live delta-to-best, predicted lap, best &amp; theoretical best.</p></div>
+      <div class="card"><div class="k">Sectors</div><h3>3-sector splits</h3><p>Live S1/S2/S3 deltas versus your best, plus per-lap sector times saved to the activity.</p></div>
+      <div class="card"><div class="k">Telemetry</div><h3>G-force &amp; more</h3><p>GPS-derived lateral &amp; longitudinal G with maxima, speed, HR, temperature, elevation, SpO2 and respiration.</p></div>
+      <div class="card"><div class="k">Save &amp; analyze</div><h3>Full Garmin activity</h3><p>Syncs to Garmin Connect with the GPS track and rich custom data fields — export the FIT for third-party analysis tools.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Every screen you need, a page-flick away</h2>
+    <p class="lead">Pick which screen you land on when a session starts, and page up/down between the rest.</p>
+    <ul class="screens" style="list-style:none;padding:0;columns:2;column-gap:40px;">
+      <li><strong>Dashboard</strong> — at-a-glance grid: lap, sectors, speed, distance, G, temp, battery.</li>
+      <li><strong>Simple Lap</strong> — a big current-lap time colored vs. your best.</li>
+      <li><strong>Timing</strong> — current, predicted, best, theoretical best &amp; live sectors.</li>
+      <li><strong>Stats</strong> — full session table incl. max G, max HR, ascent/descent.</li>
+      <li><strong>Lap List</strong> — scrollable history with sector splits.</li>
+      <li><strong>Track Map</strong> — your GPS trace with heading-up follow/zoom.</li>
+      <li><strong>Trip</strong> — moving time, distance &amp; time back to start, ascent/descent (touring).</li>
+      <li><strong>Results</strong> — an end-of-session summary tailored to your activity.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Simple, honest pricing</h2>
+    <div class="price">
+      <div class="tag">$6.99 <small>one-time · no subscription</small></div>
+      <div style="color:var(--muted);max-width:44ch;">Try it free with a 3-lap-per-session limit. Unlock unlimited laps once, forever — no ads, no yearly fee.</div>
+    </div>
+    <p style="margin-top:22px;">
+      <a class="btn" href="https://apps.garmin.com/apps/56d79f079a474e0db369765ae3ef2861">Download on Connect IQ</a>
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="safety"><strong>Safety:</strong> HotLap is a timing and data tool for use on closed courses, private
+    property, and other appropriate venues. Don't interact with your watch while operating a vehicle or other
+    motorized device — keep your eyes up and hands on the controls. Always obey traffic and venue rules and
+    operate within your abilities. Use at your own risk.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><a href="https://www.thesterk.com/HotLap/">Privacy Policy</a> &nbsp;·&nbsp;
+       Questions? <a href="mailto:info@thesterk.com">info@thesterk.com</a></p>
+    <p>HotLap is not affiliated with or endorsed by Garmin Ltd. Garmin, Connect IQ, and Garmin Connect are
+       trademarks of Garmin Ltd. or its subsidiaries.</p>
+  </div>
+</footer>
+
+</body>
+</html>
