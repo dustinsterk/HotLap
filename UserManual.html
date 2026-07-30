@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HotLap — User Manual</title>
+<style>
+:root{
+  --bg:#0f1115; --panel:#171a21; --panel2:#1e222b; --line:#2a2f3a;
+  --text:#e7eaf0; --muted:#9aa3b2; --accent:#ff5a3c; --accent2:#5b8cff;
+  --green:#3fb768; --amber:#f2c14e; --red:#e0503c; --blue:#4b8cf5; --purple:#8b5cf6; --orange:#e08a3c;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{display:flex;max-width:1200px;margin:0 auto;gap:24px;padding:0 16px}
+/* sidebar */
+nav{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;
+  width:250px;flex:0 0 250px;padding:20px 8px 40px;border-right:1px solid var(--line)}
+nav .brand{display:flex;align-items:center;gap:10px;margin:0 8px 14px}
+nav .brand .dot{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(255,90,60,.18)}
+nav .brand b{font-size:18px;letter-spacing:.5px}
+nav a{display:block;color:var(--muted);padding:5px 12px;border-radius:6px;font-size:13.5px}
+nav a:hover{background:var(--panel2);color:var(--text);text-decoration:none}
+nav .grp{margin:14px 12px 4px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#6b7280}
+main{flex:1;min-width:0;padding:28px 8px 80px;max-width:820px}
+header.top{padding:8px 0 22px;border-bottom:1px solid var(--line);margin-bottom:26px}
+header.top h1{margin:0 0 6px;font-size:30px}
+header.top p{margin:0;color:var(--muted)}
+.badge{display:inline-block;background:var(--panel2);border:1px solid var(--line);color:var(--muted);
+  border-radius:999px;padding:2px 10px;font-size:12px;margin-left:8px;vertical-align:middle}
+h2{font-size:23px;margin:38px 0 12px;padding-top:10px;border-top:1px solid var(--line)}
+h2:first-of-type{border-top:none}
+h3{font-size:17px;margin:22px 0 8px}
+p{margin:10px 0}
+ul,ol{margin:10px 0;padding-left:22px}
+li{margin:4px 0}
+code{background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:14px 0}
+.tip{border-left:3px solid var(--accent2);background:var(--panel);padding:10px 14px;border-radius:6px;margin:14px 0}
+.warn{border-left:3px solid var(--amber);background:var(--panel);padding:10px 14px;border-radius:6px;margin:14px 0}
+.safety{border-left:3px solid var(--red);background:var(--panel);padding:12px 14px;border-radius:6px;margin:16px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;background:var(--panel)}
+tr:last-child td{border-bottom:none}
+.pill{display:inline-block;padding:1px 8px;border-radius:6px;font-size:12px;font-weight:600;color:#fff}
+.p-green{background:var(--green)}.p-amber{background:var(--amber);color:#211}.p-red{background:var(--red)}
+.p-blue{background:var(--blue)}.p-purple{background:var(--purple)}.p-orange{background:var(--orange)}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.legend span{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}
+.legend i{width:12px;height:12px;border-radius:50%;display:inline-block}
+.foot{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+@media(max-width:820px){
+  nav{display:none}
+  .wrap{padding:0 14px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+  <div class="brand"><span class="dot"></span><b>HotLap</b></div>
+  <a href="#overview">Overview</a>
+  <a href="#start">Getting started</a>
+  <div class="grp">Timing your laps</div>
+  <a href="#methods">Lap methods</a>
+  <a href="#line">Set Start/Finish Line</a>
+  <a href="#track">Set Track (database)</a>
+  <a href="#request">Request a new track</a>
+  <a href="#sectors">Sectors</a>
+  <a href="#pit">Pit lane &amp; pit stops</a>
+  <div class="grp">On the watch</div>
+  <a href="#controls">Controls &amp; gestures</a>
+  <a href="#status">Status indicators</a>
+  <a href="#screens">Screens</a>
+  <div class="grp">Settings</div>
+  <a href="#settings">All settings</a>
+  <div class="grp">After the session</div>
+  <a href="#save">Save, review &amp; export</a>
+  <a href="#data">What gets recorded</a>
+  <a href="#unlock">Free trial &amp; PRO</a>
+  <div class="grp">Help</div>
+  <a href="#faq">Troubleshooting / FAQ</a>
+  <a href="#safety">Safety</a>
+</nav>
+
+<main>
+<header class="top">
+  <h1>HotLap User Manual <span class="badge">v1.2.0</span></h1>
+  <p>A GPS lap timer and data recorder for track days, racing, karting, motorcycling and touring — on your Garmin watch.</p>
+</header>
+
+<section id="overview">
+<h2>Overview</h2>
+<p>HotLap turns your compatible Garmin watch into a motorsport lap timer. It records a standard Garmin activity (GPS, speed, heart rate, elevation, lap splits) and adds racing-specific data: live delta-to-best, G-force, per-track sectors and pit timing. You can time laps three ways — by crossing a start/finish line, by a set distance, or by tapping — and review everything afterward in Garmin Connect or export the FIT into third-party analysis tools.</p>
+<p>HotLap is <b>free to try</b> (3 laps per session, unlimited sessions). A one-time <b>Unlock PRO</b> purchase removes the lap cap. See <a href="#unlock">Free trial &amp; PRO</a>.</p>
+</section>
+
+<section id="start">
+<h2>Getting started</h2>
+<ol>
+  <li><b>Install &amp; open</b> HotLap on your watch and step outside for a clear view of the sky so it can get a GPS fix (the outer ring blinks yellow and the status reads <span class="pill p-amber">NO GPS</span> until it does).</li>
+  <li><b>Open the menu</b> — tap the screen (then tap again), press-and-hold, or hold the <b>UP/MENU</b> button.</li>
+  <li><b>Choose how laps are timed</b> under <b>Lap Method</b> (Position, Distance, or Manual). See <a href="#methods">Lap methods</a>.</li>
+  <li><b>In Position mode, tell it where the line is:</b> either <b>Set Track</b> (pick a real circuit from the database) or <b>Set Start/Finish Line</b> (drop a line at your current spot). Distance and Manual modes don't need a line.</li>
+  <li><b>Start.</b> Setting a manual line starts recording immediately; picking a track drops you back on the menu with <b>Start Session</b> highlighted so you can begin when ready.</li>
+</ol>
+<div class="tip">When no line is set in Position mode, the top of the Dashboard flashes <b>SET LINE</b> / <b>SET TRACK</b> and the outer ring blinks red — a reminder that lap timing isn't armed yet.</div>
+</section>
+
+<section id="methods">
+<h2>Lap methods</h2>
+<p>Choose under <b>Menu → Lap Method</b>. It can only be changed before recording starts.</p>
+<table>
+<tr><th>Method</th><th>How a lap is triggered</th><th>Best for</th></tr>
+<tr><td><b>Position</b></td><td>Crossing a start/finish line (from a selected track or a line you set). A direction check rejects wrong-way / loop-back false laps.</td><td>Circuits, autocross, karting, HPDE</td></tr>
+<tr><td><b>Distance</b></td><td>Every set distance (presets from 0.25 to 10 miles). No line needed.</td><td>Drag strips, standing miles, intervals, touring segments</td></tr>
+<tr><td><b>Manual</b></td><td>You tap the screen to mark each lap. No line, no GPS required to lap.</td><td>Anywhere a line won't work, or ad-hoc timing</td></tr>
+</table>
+</section>
+
+<section id="line">
+<h2>Set Start/Finish Line</h2>
+<p>In Position mode, <b>Menu → Set Start/Finish Line</b> drops the line at your current GPS position and immediately starts recording. Use this when you're sitting on the start/finish and there's no database track (or you want a custom line). The catch zone is sized by the <b>Lap Radius</b> setting.</p>
+<p>To re-mark the line, use <b>Reset Session</b> (this clears the line, laps and stats), then set it again.</p>
+</section>
+
+<section id="track">
+<h2>Set Track (circuit database)</h2>
+<p>HotLap includes a database of 2,000+ real circuits worldwide — road courses, ovals, karting and their layout / direction variants. In Position mode choose <b>Menu → Set Track</b>: it lists the nearest tracks by GPS (you need a fix first). Pick one and HotLap sets the start/finish line for you at the real crossing, sizes the catch zone from the track's actual line width, and loads the track's real sector boundaries and pit lane where available.</p>
+<p>After you select a track, HotLap returns to the menu with <b>Start Session</b> highlighted — the track sets the line but doesn't auto-start, so you can begin when you're ready. The selected track's name appears on the Stats screen and is saved into the activity file.</p>
+<div class="tip">Long track names on the picker scroll left-to-right when highlighted so you can read the full name including the layout / direction variant.</div>
+</section>
+
+<section id="request">
+<h2>Request a new track</h2>
+<p>Don't see your circuit, or spot one that needs fixing? Request it and it can be added in a future update. Email <a href="mailto:info@thesterk.com?subject=HotLap%20track%20request">info@thesterk.com</a> with:</p>
+<ul>
+  <li>A <b>Google Maps pin</b> to the track's start/finish. In Google Maps, right-click the middle of the start/finish line (on the racing surface), then copy the coordinates or the share link, and paste it into the email.</li>
+  <li>The <b>track name</b> (and the specific layout / direction if it has more than one — e.g. North, South, Short, Long, CW/CCW).</li>
+  <li>Any <b>sector and layout information</b> you have — sector boundary locations, pit entry / pit exit / pit start-finish points, and the approximate track width at start/finish all help. Extra pins or a sketch are welcome; even just the name and start/finish pin is enough to get it added.</li>
+</ul>
+<div class="tip">The more precise the pins, the better lap and sector timing will be — but don't worry if you only have the start/finish; sectors will fall back to even splits until exact boundaries are added.</div>
+</section>
+
+<section id="sectors">
+<h2>Sectors</h2>
+<p>Sectors split the lap so you can see where you're gaining or losing time.</p>
+<ul>
+  <li><b>On a database track</b> with sector data, HotLap uses the circuit's <b>real sector boundaries</b> (up to 8 sectors). Your splits line up with the track's official sectors.</li>
+  <li><b>On a manual line or Distance mode</b>, it falls back to <b>3 even splits</b> by distance.</li>
+</ul>
+<p>The Dashboard and Timing screens show live sector deltas versus your best; the Lap List shows every sector per lap. The <b>theoretical best</b> lap (sum of your fastest sectors) appears on the Timing and Stats screens.</p>
+</section>
+
+<section id="pit">
+<h2>Pit lane &amp; pit stops</h2>
+<p>On database tracks that include pit data, HotLap detects when you enter and leave the pit lane and handles it intelligently so a pit visit doesn't corrupt your lap times:</p>
+<ul>
+  <li>While you're in the pit lane, the normal start/finish trigger is <b>suppressed</b>, so driving past start/finish on the pit road doesn't count a phantom lap.</li>
+  <li>The lap you pit on is tagged <b>IN</b> and the lap you rejoin on is tagged <b>OUT</b> in the Lap List; both are excluded from your best lap and best sectors.</li>
+  <li>A live blue <b>PIT</b> timer shows your stop duration on the Dashboard, Simple Lap and Timing screens.</li>
+  <li>If the track has a dedicated <b>pit start/finish line</b> (aligned with the real one), crossing it in the pit closes your in-lap right there and starts the out-lap — keeping lap continuity through the stop.</li>
+  <li>Fastest and total pit time are shown on the Stats and Results screens, and the pit count, best and total pit times are saved into the activity.</li>
+</ul>
+</section>
+
+<section id="controls">
+<h2>Controls &amp; gestures</h2>
+<table>
+<tr><th>Action</th><th>What it does</th></tr>
+<tr><td>Tap screen (wake, then tap again), press-and-hold, or <b>UP/MENU</b> button</td><td>Open the menu</td></tr>
+<tr><td>Tap (Manual mode)</td><td>Marks a lap</td></tr>
+<tr><td>Swipe / page up &amp; down</td><td>Switch between screens (Dashboard, Simple Lap, Timing, Stats, Lap List, Track Map, Trip)</td></tr>
+<tr><td><b>BACK</b></td><td>Exit — if a session is running you'll be prompted to Save &amp; Exit, Discard &amp; Exit, or Cancel</td></tr>
+</table>
+<div class="warn">Don't interact with the watch while operating a vehicle. Set everything up before you roll, and let it record hands-off. See <a href="#safety">Safety</a>.</div>
+</section>
+
+<section id="status">
+<h2>Status indicators</h2>
+<p>These appear on every screen so you always know the state at a glance:</p>
+<table>
+<tr><th>Indicator</th><th>Meaning</th></tr>
+<tr><td><span class="pill p-amber">NO GPS</span> + blinking yellow ring</td><td>No GPS fix yet — wait for the sky view to clear.</td></tr>
+<tr><td><b>SET LINE / SET TRACK</b> + blinking red ring</td><td>Position mode with no line set. Set a line or pick a track to arm timing.</td></tr>
+<tr><td><span class="pill p-red">REC</span> + red dot (top center)</td><td>Recording. The dot blinks while paused.</td></tr>
+<tr><td><span class="pill p-blue">PIT</span> timer</td><td>You're in the pit lane; shows the live stop duration.</td></tr>
+<tr><td>Green <b>LAP</b> flash / new-best alert</td><td>A lap was recorded; green means a new best.</td></tr>
+</table>
+</section>
+
+<section id="screens">
+<h2>Screens</h2>
+<p>Page up/down to move between them. The one you land on at session start is the <b>Session Screen</b> setting.</p>
+<h3>Dashboard</h3>
+<p>An at-a-glance grid: current lap, sectors, speed, average, distance, G-force, lap count, temperature and battery.</p>
+<h3>Simple Lap</h3>
+<p>A big current-lap time, colored versus your best (green = ahead), with the delta and your best lap.</p>
+<h3>Timing</h3>
+<p>Current lap, predicted lap, best lap, theoretical best, and live sector deltas.</p>
+<h3>Stats</h3>
+<p>Best lap, lap count, average/max speed, distance, max G / heart rate / temperature, ascent/descent, SpO2, respiration, pit best/total, and the selected track name.</p>
+<h3>Lap List</h3>
+<p>Scrollable lap history with sector splits and IN/OUT pit-lap tags.</p>
+<h3>Track Map</h3>
+<p>A live GPS trace that auto-fits and follows heading-up as you drive.</p>
+<h3>Trip</h3>
+<p>Available in Distance/Manual modes: moving time, distance, and distance/time back to your start — or remaining distance and estimated time to a <b>Trip Target</b> — plus ascent/descent.</p>
+<h3>Results</h3>
+<p>Shown when you finish: best lap + G for racing, or moving time + climb for touring, plus a pit summary.</p>
+</section>
+
+<section id="settings">
+<h2>All settings</h2>
+<p>Open the menu to reach these. Some only appear in the relevant mode or state (for example, Lap Radius is hidden when a database track is selected, and Lap Distance only appears in Distance mode).</p>
+<table>
+<tr><th>Setting</th><th>What it does</th></tr>
+<tr><td><b>Set Start/Finish Line</b></td><td>(Position mode, before a line is set) Drops the start/finish line at your current position and starts recording.</td></tr>
+<tr><td><b>Set Track</b></td><td>(Position mode, before a line is set) Pick a circuit from the database; sets the line, sectors and pit automatically.</td></tr>
+<tr><td><b>Start Session / Pause / Resume</b></td><td>Start recording; while recording, pause or resume.</td></tr>
+<tr><td><b>Activity</b></td><td>The activity type baked into the saved file (e.g. Motorcycling, Track Day). Set it before starting — it can't change mid-recording.</td></tr>
+<tr><td><b>Lap Method</b></td><td>Position, Distance, or Manual (see <a href="#methods">Lap methods</a>). Only editable before recording.</td></tr>
+<tr><td><b>Lap Radius</b></td><td>(Position mode, manual line) Size of the catch zone around your start/finish line. Hidden when a database track is selected — those size the zone from the track's real line width.</td></tr>
+<tr><td><b>Lap Distance</b></td><td>(Distance mode) The lap length, presets from 0.25 to 10 miles.</td></tr>
+<tr><td><b>Trip Target</b></td><td>(Distance/Manual modes) A target distance that drives the Trip screen's remaining-distance and estimated-time readouts.</td></tr>
+<tr><td><b>Units</b></td><td>Speed/distance units: mph, km/h, or knots.</td></tr>
+<tr><td><b>Session Screen</b></td><td>Which screen you land on when a session starts (Dashboard, Simple Lap, Timing, or Trip).</td></tr>
+<tr><td><b>Static Rec View</b></td><td>A minimal "RECORDING" screen that overrides the Session Screen — for a distraction-free display.</td></tr>
+<tr><td><b>Auto Pause</b></td><td>Automatically pause recording when you're stopped, and resume when moving.</td></tr>
+<tr><td><b>Alert Timer</b></td><td>A periodic beep/vibration every N minutes (or Off) — handy as a stint reminder.</td></tr>
+<tr><td><b>Lap Beep</b></td><td>Beep/vibrate when a lap is recorded.</td></tr>
+<tr><td><b>Sounds</b></td><td>Master tones on, or <b>Quiet</b> (mutes tones but keeps vibration).</td></tr>
+<tr><td><b>Strava (Generic)</b></td><td>Tags the saved activity with a generic sport type so it imports cleanly into Strava.</td></tr>
+<tr><td><b>Force Pulse Ox</b></td><td>Forces the watch's onboard Pulse Ox (SpO2) sensor to sample during the session.</td></tr>
+<tr><td><b>Save Session</b></td><td>Finalize and save the recording as a Garmin activity.</td></tr>
+<tr><td><b>Reset Session</b></td><td>Clears the track, line, laps and stats and discards the current recording — for a fresh start. Confirmation required.</td></tr>
+<tr><td><b>Unlock PRO</b></td><td>One-time purchase that removes the 3-lap trial cap (see below).</td></tr>
+<tr><td><b>Version</b></td><td>Shows the installed app version.</td></tr>
+</table>
+</section>
+
+<section id="save">
+<h2>Save, review &amp; export</h2>
+<p>When you're done, open the menu and choose <b>Save Session</b> (or press BACK and pick <b>Save &amp; Exit</b>). HotLap saves a standard Garmin activity that syncs to <b>Garmin Connect</b> like any other.</p>
+<h3>Export the FIT</h3>
+<p>In Garmin Connect (web), open the activity → the gear/settings menu → <b>Export Original</b> to download the <code>.fit</code> file. From there you can analyze it in third-party motorsport tools.</p>
+<h3>VBOX / Circuit Tools</h3>
+<p>A companion script, <code>fit2vbo.py</code>, converts a HotLap FIT into a RaceLogic VBOX <code>.vbo</code> for VBOX Circuit Tools — it maps GPS, speed, heading, height, heart rate and the G-force channels, embeds a start/finish gate so Circuit Tools auto-splits laps, and records the track name, pit summary and per-lap sector times in the file's comments.</p>
+<p><a href="fit2vbo.py" download><b>Download fit2vbo.py</b></a> &nbsp;·&nbsp; requires Python 3 and the <code>fitparse</code> package. Run it with <code>python3 fit2vbo.py activity.fit</code> to produce <code>activity.vbo</code>.</p>
+</section>
+
+<section id="data">
+<h2>What gets recorded</h2>
+<p>Alongside the standard GPS track, speed, heart rate, temperature, elevation and lap splits, HotLap writes these custom fields into the activity for analysis:</p>
+<ul>
+  <li><b>Per sample:</b> lateral &amp; longitudinal G, SpO2, respiration.</li>
+  <li><b>Per lap:</b> max lateral G, max braking G, sector times (up to 8), pit-stop time, and an in/out-lap flag.</li>
+  <li><b>Per session:</b> max &amp; average speed, max lateral/braking/accel/combined G, max temperature, best lap, theoretical best, total ascent/descent, the selected track name, and pit count / best / total pit time.</li>
+</ul>
+<div class="tip">The circuit name is stored in a dedicated <code>track</code> field in the activity — the activity's title stays your chosen activity type, but the track it was run on travels with the file.</div>
+</section>
+
+<section id="unlock">
+<h2>Free trial &amp; PRO</h2>
+<p>HotLap is free to try: run as many sessions as you like, each capped at <b>3 recorded laps</b> — including full use of the track database. To record <b>unlimited laps</b>, unlock PRO with a one-time purchase (no subscription).</p>
+<h3>How to unlock</h3>
+<ol>
+  <li>Open the menu (tap the screen, or hold UP).</li>
+  <li>Scroll to the bottom, just above the Version line, and choose <b>Unlock PRO</b>.</li>
+  <li>Follow the on-screen instructions. Your watch needs internet to complete the purchase — either via Wi-Fi, or with the Garmin Connect app open and paired on your phone.</li>
+</ol>
+</section>
+
+<section id="faq">
+<h2>Troubleshooting / FAQ</h2>
+<h3>It says NO GPS and won't start.</h3>
+<p>Get outside with a clear sky view and wait for the fix. In Position mode you can't start until there's a fix, because the line needs a position. Distance and Manual can start without one, but laps/track won't work until a fix arrives.</p>
+<h3>Laps aren't triggering in Position mode.</h3>
+<p>Make sure a line is set (the SET LINE / SET TRACK prompt should be gone) and that you're crossing in the correct direction — the direction check rejects wrong-way crossings. If you set a manual line, a larger Lap Radius catches wider crossings.</p>
+<h3>My pit lane pass counted as a lap (or my in-lap looks wrong).</h3>
+<p>Pit handling only works on database tracks that include pit data. On a manual line there's no pit lane, so a pass near start/finish will register.</p>
+<h3>The lap I pitted on isn't in my best lap.</h3>
+<p>That's intentional — in-laps and out-laps are excluded from best lap and best sectors so a stop doesn't skew your bests.</p>
+<h3>How do I re-mark the start/finish?</h3>
+<p>Use Reset Session (it clears the line, laps and stats), then Set Track or Set Start/Finish Line again.</p>
+<h3>Which watches are supported / where are new features?</h3>
+<p>HotLap runs on a wide range of Connect IQ devices. For device support, pricing and the latest updates, check the app's Connect IQ store listing.</p>
+</section>
+
+<section id="safety">
+<h2>Safety</h2>
+<div class="safety">
+HotLap is a timing and data tool for use on closed courses, private property, and other appropriate venues. Don't interact with your watch while operating a vehicle or other motorized device — keep your eyes up and hands on the controls. Always obey traffic and venue rules and operate within your abilities. Use at your own risk.
+</div>
+</section>
+
+<div class="foot">
+  HotLap v1.2.0 — user manual. This page is self-contained; you can host it as a single HTML file. Product features and device support may change; the Connect IQ store listing has the current details.
+</div>
+</main>
+</div>
+</body>
+</html>
