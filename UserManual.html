@@ -110,6 +110,7 @@ tr:last-child td{border-bottom:none}
   <li><b>Start.</b> Setting a manual line starts recording immediately; picking a track drops you back on the menu with <b>Start Session</b> highlighted so you can begin when ready.</li>
 </ol>
 <div class="tip">When no line is set in Position mode, the top of the Dashboard flashes <b>SET LINE</b> / <b>SET TRACK</b> and the outer ring blinks red — a reminder that lap timing isn't armed yet.</div>
+<div class="tip">On a <b>database track</b>, lap timing waits for your <b>first start/finish crossing</b> — the lap out from the pits or paddock is your <b>out-lap</b>, during which the header blinks a yellow <b>AWAITING S/F</b> and the lap clock sits at 0. It isn't counted, so Lap 1 is a clean flying lap. In <b>Manual</b> mode the header blinks <b>TAP TO START</b> and your <b>first tap</b> starts Lap 1. A <b>manual line</b> (dropped where you're sitting, on the line) and <b>Distance</b> mode start timing immediately. Recording begins right away either way, so the out-lap is still in your saved activity — it's just not a counted lap.</div>
 </section>
 
 <section id="methods">
@@ -117,9 +118,9 @@ tr:last-child td{border-bottom:none}
 <p>Choose under <b>Menu → Lap Method</b>. It can only be changed before recording starts.</p>
 <table>
 <tr><th>Method</th><th>How a lap is triggered</th><th>Best for</th></tr>
-<tr><td><b>Position</b></td><td>Crossing a start/finish line (from a selected track or a line you set). A direction check rejects wrong-way / loop-back false laps.</td><td>Circuits, autocross, karting, HPDE</td></tr>
-<tr><td><b>Distance</b></td><td>Every set distance (presets from 0.25 to 10 miles). No line needed.</td><td>Drag strips, standing miles, intervals, touring segments</td></tr>
-<tr><td><b>Manual</b></td><td>You tap the screen to mark each lap. No line, no GPS required to lap.</td><td>Anywhere a line won't work, or ad-hoc timing</td></tr>
+<tr><td><b>Position</b></td><td>Crossing a start/finish line (from a selected track or a line you set). A direction check rejects wrong-way / loop-back false laps. On a database track, timing starts at your first crossing — the out-lap isn't counted.</td><td>Circuits, autocross, karting, HPDE</td></tr>
+<tr><td><b>Distance</b></td><td>Every set distance (presets from 0.25 to 10 miles). No line needed; timing starts immediately.</td><td>Drag strips, standing miles, intervals, touring segments</td></tr>
+<tr><td><b>Manual</b></td><td>Your first tap starts Lap 1; each tap after that marks a lap. No line, no GPS required to lap.</td><td>Anywhere a line won't work, or ad-hoc timing</td></tr>
 </table>
 </section>
 
@@ -131,7 +132,7 @@ tr:last-child td{border-bottom:none}
 
 <section id="track">
 <h2>Set Track (circuit database)</h2>
-<p>HotLap includes a database of 2,000+ real circuits worldwide — road courses, ovals, karting and their layout / direction variants. In Position mode choose <b>Menu → Set Track</b>: it lists the nearest tracks by GPS (you need a fix first). Pick one and HotLap sets the start/finish line for you at the real crossing, sizes the catch zone from the track's actual line width, and loads the track's real sector boundaries and pit lane where available.</p>
+<p>HotLap includes a database of 2,300+ real circuits worldwide — road courses, ovals, karting and their layout / direction variants. In Position mode choose <b>Menu → Set Track</b>: it lists the nearest tracks by GPS (you need a fix first). Pick one and HotLap sets the start/finish line for you at the real crossing, sizes the catch zone from the track's actual line width, and loads the track's real sector boundaries and pit lane where available.</p>
 <p>After you select a track, HotLap returns to the menu with <b>Start Session</b> highlighted — the track sets the line but doesn't auto-start, so you can begin when you're ready. The selected track's name appears on the Stats screen and is saved into the activity file.</p>
 <div class="tip">Long track names on the picker scroll left-to-right when highlighted so you can read the full name including the layout / direction variant.</div>
 </section>
@@ -188,6 +189,8 @@ tr:last-child td{border-bottom:none}
 <tr><th>Indicator</th><th>Meaning</th></tr>
 <tr><td><span class="pill p-amber">NO GPS</span> + blinking yellow ring</td><td>No GPS fix yet — wait for the sky view to clear.</td></tr>
 <tr><td><b>SET LINE / SET TRACK</b> + blinking red ring</td><td>Position mode with no line set. Set a line or pick a track to arm timing.</td></tr>
+<tr><td>Blinking yellow <b>AWAITING S/F</b> / <b>TAP TO START</b> (lap header)</td><td>Out-lap — recording, but the lap clock is parked at 0. It starts at your first start/finish crossing (database track) or first tap (Manual). A manual line and Distance mode start timing immediately, so you won't see this.</td></tr>
+<tr><td>Blinking yellow <b>Reverse - Sectors OFF</b></td><td>You're running the track opposite its layout; sector splits are hidden (they'd be out of order). Lap times still record. See the FAQ.</td></tr>
 <tr><td><span class="pill p-red">REC</span> + red dot (top center)</td><td>Recording. The dot blinks while paused.</td></tr>
 <tr><td><span class="pill p-blue">PIT</span> timer</td><td>You're in the pit lane; shows the live stop duration.</td></tr>
 <tr><td>Green <b>LAP</b> flash / new-best alert</td><td>A lap was recorded; green means a new best.</td></tr>
@@ -228,9 +231,11 @@ tr:last-child td{border-bottom:none}
 <tr><td><b>Lap Radius</b></td><td>(Position mode, manual line) Size of the catch zone around your start/finish line. Hidden when a database track is selected — those size the zone from the track's real line width.</td></tr>
 <tr><td><b>Lap Distance</b></td><td>(Distance mode) The lap length, presets from 0.25 to 10 miles.</td></tr>
 <tr><td><b>Trip Target</b></td><td>(Distance/Manual modes) A target distance that drives the Trip screen's remaining-distance and estimated-time readouts.</td></tr>
+<tr><td><b>GNSS Mode</b></td><td>Which satellite systems the watch uses: <b>Auto</b> (device default), <b>Max accuracy</b> (multi-band / multi-constellation where supported — best timing precision, more battery), or <b>Battery saver</b> (GPS only). Applies immediately; falls back automatically where an option isn't supported.</td></tr>
 <tr><td><b>Units</b></td><td>Speed/distance units: mph, km/h, or knots.</td></tr>
 <tr><td><b>Session Screen</b></td><td>Which screen you land on when a session starts (Dashboard, Simple Lap, Timing, or Trip).</td></tr>
 <tr><td><b>Static Rec View</b></td><td>A minimal "RECORDING" screen that overrides the Session Screen — for a distraction-free display.</td></tr>
+<tr><td><b>Auto Start Rec Session</b></td><td>On by default. Once you're set up, HotLap begins recording automatically as soon as you're moving (about <b>15 mph / 24 km/h / 13 kn</b>, held for a few seconds) — a safety net so a forgotten Start doesn't cost you a session. It needs a GPS fix, and in Position mode a selected track; Distance and Manual are always eligible. (A manual start/finish line already starts recording the moment you drop it, so this net only matters for the "picked a track, forgot Start" case.) The speed trigger is a fixed real-world speed, so it's the same whatever units you display. It fires once and re-arms after <b>Reset Session</b>. You can still press Start manually anytime.</td></tr>
 <tr><td><b>Auto Pause</b></td><td>Automatically pause recording when you're stopped, and resume when moving.</td></tr>
 <tr><td><b>Alert Timer</b></td><td>A periodic beep/vibration every N minutes (or Off) — handy as a stint reminder.</td></tr>
 <tr><td><b>Lap Beep</b></td><td>Beep/vibrate when a lap is recorded.</td></tr>
@@ -240,7 +245,7 @@ tr:last-child td{border-bottom:none}
 <tr><td><b>Save Session</b></td><td>Finalize and save the recording as a Garmin activity.</td></tr>
 <tr><td><b>Reset Session</b></td><td>Clears the track, line, laps and stats and discards the current recording — for a fresh start. Confirmation required.</td></tr>
 <tr><td><b>Unlock PRO</b></td><td>One-time purchase that removes the 3-lap trial cap (see below).</td></tr>
-<tr><td><b>Version</b></td><td>Shows the installed app version.</td></tr>
+<tr><td><b>Version</b></td><td>Shows the installed app version. Tap it to open an <b>info screen</b> with the track database count, free/used memory, and the live GPS fix rate (Hz).</td></tr>
 </table>
 </section>
 
@@ -288,6 +293,16 @@ tr:last-child td{border-bottom:none}
 <p>That's intentional — in-laps and out-laps are excluded from best lap and best sectors so a stop doesn't skew your bests.</p>
 <h3>How do I re-mark the start/finish?</h3>
 <p>Use Reset Session (it clears the line, laps and stats), then Set Track or Set Start/Finish Line again.</p>
+<h3>The header blinks "AWAITING S/F" and the lap timer isn't counting — is something wrong?</h3>
+<p>No — that's the out-lap. On a database track the lap clock intentionally waits for your <b>first start/finish crossing</b> so Lap 1 is a clean flying lap instead of a partial pit-out lap; in Manual mode it blinks <b>TAP TO START</b> and waits for your <b>first tap</b>. You're still recording the whole time (the out-lap is in your saved activity), and timing starts automatically the moment you cross the line or tap. Because a real pit exit is usually past start/finish, this can persist for most of the out-lap — that's expected. A manual line and Distance mode start immediately, so they never show it.</p>
+<h3>It started recording on its own — why?</h3>
+<p>That's <b>Auto Start Rec Session</b> (on by default). Once you've set up a session, HotLap starts recording automatically when you're moving (about 15 mph, held for a few seconds) so a forgotten Start can't cost you a run — and it lands you on the session screen so you know. If it fired when you didn't mean to record (driving to tech, repositioning the car), use <b>Reset Session</b> to discard and re-arm it, or turn the setting off in the menu. It needs a GPS fix and, in Position mode, a selected track.</p>
+<h3>Why do my sectors show "Reverse - Sectors OFF" on the watch?</h3>
+<p>HotLap checks the direction you cross the start/finish line against the selected track's layout. If you're running the track the opposite way, the sector splits would be out of order, so HotLap turns them off and blinks a yellow <b>Reverse - Sectors OFF</b> notice wherever splits normally appear — but <b>your lap times still record normally</b>. This is decided at your first start/finish crossing and stays set for the rest of the session. If it's unexpected, you likely selected the wrong direction of the track (for example the CW vs CCW version): use <b>Reset Session</b> and reselect the correct layout. If you're intentionally running the reverse direction, this is expected and you can ignore it.</p>
+<h3>What is GNSS Mode, and which should I choose?</h3>
+<p>GNSS Mode controls which satellite systems the watch uses. <b>Auto</b> uses your watch's default. <b>Max accuracy</b> enables multi-band, multi-constellation positioning where your watch supports it, for the tightest fixes and the most precise lap and sector timing — at a higher battery cost. <b>Battery saver</b> uses single-band GPS only. For timed track sessions, Max accuracy is recommended; for all-day use on battery, Auto or Battery saver. The setting takes effect immediately and falls back automatically on watches that don't support a given option.</p>
+<h3>My first lap shows no sector deltas.</h3>
+<p>Live sector deltas compare against your best, so HotLap needs one completed lap as a reference — the sector strip reads "--" until then and fills in from your second lap onward. (Your first lap's sector times are still recorded and appear in the Lap List.)</p>
 <h3>Which watches are supported / where are new features?</h3>
 <p>HotLap runs on a wide range of Connect IQ devices. For device support, pricing and the latest updates, check the app's Connect IQ store listing.</p>
 </section>
