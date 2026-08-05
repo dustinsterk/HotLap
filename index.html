@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HotLap — Motorsport Lap Timer & Telemetry for Garmin</title>
-<meta name="description" content="Turn your Garmin watch into a motorsport lap timer and data logger: GPS lap timing, live delta-to-best, sector splits, G-force, track map, and a full activity you save to Garmin Connect. Free to try.">
+<meta name="description" content="Turn your Garmin watch into a motorsport lap timer and data logger: a 2,300+ circuit database, GPS lap timing with a live predictive delta bar, real sector splits, pit-lane timing, G-force, track map, and a full activity you save to Garmin Connect. Free to try.">
 <!-- Put HotLap_hero.png and HotLap_icon_128_32bit_rgba.png in the same folder as this file. -->
 <link rel="icon" href="HotLap_icon_128_32bit_rgba.png">
 <style>
@@ -68,7 +68,7 @@
 <header class="hero">
   <div class="wrap">
     <img class="banner" src="HotLap_hero.png" alt="HotLap — Motorsport Track Day Lap Timer & Telemetry">
-    <p class="tagline">GPS lap timing, live delta-to-best, sectors, G-force &amp; full telemetry — on your wrist.</p>
+    <p class="tagline">Lap timing, a live predictive delta bar, real sectors, pit-lane timing &amp; full telemetry — on your wrist.</p>
     <p class="trial">Free to try · 3 laps per session · one-time $6.99 unlock, no subscription</p>
     <div class="cta">
       <!-- Replace with your exact Connect IQ Store URL if different -->
@@ -84,12 +84,18 @@
   <div class="wrap">
     <h2>Built for the track — and the trail</h2>
     <p class="lead">HotLap is a purpose-built lap timer and data logger for track days, HPDE, autocross,
-      karting, motorcycling and club racing — plus touring on snowmobile, ATV, boat, jet ski or trail.</p>
+      karting, motorcycling and club racing — plus touring on snowmobile, ATV, boat, jet ski or trail.
+      Recently expanded with a 2,300+ circuit database, real sector and pit-lane timing, a live
+      predictive delta bar, and more precise GPS crossings.</p>
     <div class="grid">
-      <div class="card"><div class="k">Lap timing</div><h3>Three ways to lap</h3><p>Position (start/finish line), Distance (auto every set distance), or Manual (tap). Live delta-to-best, predicted lap, best &amp; theoretical best.</p></div>
-      <div class="card"><div class="k">Sectors</div><h3>3-sector splits</h3><p>Live S1/S2/S3 deltas versus your best, plus per-lap sector times saved to the activity.</p></div>
+      <div class="card"><div class="k">Lap timing</div><h3>Three ways to lap</h3><p>Position (start/finish line), Distance (auto every set distance), or Manual (tap). Live delta-to-best, predicted, best &amp; theoretical best.</p></div>
+      <div class="card"><div class="k">Track database</div><h3>2,300+ real circuits</h3><p>Pick your track and it sets the start/finish, sector boundaries, line width and pit lane for you — layout and direction variants included.</p></div>
+      <div class="card"><div class="k">Delta bar</div><h3>See it at a glance</h3><p>A live predictive meter that runs green as you gain on your best lap and red as you lose — readable in a blink while you drive.</p></div>
+      <div class="card"><div class="k">Sectors</div><h3>Up to 8 real sectors</h3><p>Live splits versus your best on the circuit's actual sector lines, with per-lap sector times saved to the activity.</p></div>
+      <div class="card"><div class="k">Pit lane</div><h3>Pit-stop timing</h3><p>Detects pit entry/exit, tags your in- and out-laps, times the stop, and won't count a phantom lap when you pass start/finish on pit road.</p></div>
+      <div class="card"><div class="k">Accuracy</div><h3>Precise crossings</h3><p>Interpolates line crossings between the 1&nbsp;Hz GPS fixes so fast passes are timestamped exactly — with optional multi-band GNSS for the tightest fixes.</p></div>
       <div class="card"><div class="k">Telemetry</div><h3>G-force &amp; more</h3><p>GPS-derived lateral &amp; longitudinal G with maxima, speed, HR, temperature, elevation, SpO2 and respiration.</p></div>
-      <div class="card"><div class="k">Save &amp; analyze</div><h3>Full Garmin activity</h3><p>Syncs to Garmin Connect with the GPS track and rich custom data fields — export the FIT for third-party analysis tools.</p></div>
+      <div class="card"><div class="k">Save &amp; analyze</div><h3>Full Garmin activity</h3><p>Syncs to Garmin Connect with the GPS track and rich custom fields — export the FIT for third-party tools, including a VBOX converter for Circuit Tools.</p></div>
     </div>
   </div>
 </section>
@@ -100,14 +106,27 @@
     <p class="lead">Pick which screen you land on when a session starts, and page up/down between the rest.</p>
     <ul class="screens" style="list-style:none;padding:0;columns:2;column-gap:40px;">
       <li><strong>Dashboard</strong> — at-a-glance grid: lap, sectors, speed, distance, G, temp, battery.</li>
-      <li><strong>Simple Lap</strong> — a big current-lap time colored vs. your best.</li>
+      <li><strong>Simple Lap</strong> — a big current-lap time plus the predictive delta bar, green/red vs. your best.</li>
       <li><strong>Timing</strong> — current, predicted, best, theoretical best &amp; live sectors.</li>
       <li><strong>Stats</strong> — full session table incl. max G, max HR, ascent/descent.</li>
-      <li><strong>Lap List</strong> — scrollable history with sector splits.</li>
+      <li><strong>Lap List</strong> — scrollable history with sector splits and IN/OUT pit-lap tags.</li>
       <li><strong>Track Map</strong> — your GPS trace with heading-up follow/zoom.</li>
       <li><strong>Trip</strong> — moving time, distance &amp; time back to start, ascent/descent (touring).</li>
       <li><strong>Results</strong> — an end-of-session summary tailored to your activity.</li>
     </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Dialed in for track day</h2>
+    <p class="lead">The details that keep timing clean when it counts.</p>
+    <div class="grid">
+      <div class="card"><div class="k">Auto Start</div><h3>Never miss a session</h3><p>Once you're set up, HotLap starts recording as soon as you're moving — so a forgotten Start doesn't cost you a run.</p></div>
+      <div class="card"><div class="k">Clean laps</div><h3>Out-lap aware</h3><p>Timing waits for your first start/finish crossing, so Lap&nbsp;1 is a clean flying lap instead of a pit-out lap.</p></div>
+      <div class="card"><div class="k">Direction check</div><h3>Wrong-way detection</h3><p>Run a track backwards and it flags it and hides the out-of-order splits — your lap times still record.</p></div>
+      <div class="card"><div class="k">Endurance</div><h3>All-day stable</h3><p>Built to run hour after hour: memory stays in check through long sessions while every lap is saved to the activity.</p></div>
+    </div>
   </div>
 </section>
 
