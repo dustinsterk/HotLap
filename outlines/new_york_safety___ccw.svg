@@ -1,0 +1,11 @@
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+<rect width="220" height="220" rx="14" fill="#12151b"/>
+<path d="M126.9,178.1 C151.8,161.1 169.7,78.5 180.2,53.1 C190.6,27.8 202.4,5.6 189.5,26.0 C176.6,46.4 129.2,154.2 102.7,175.7 C76.2,197.3 26.5,155.0 30.5,155.4 C34.5,155.8 101.9,195.1 126.9,178.1 Z" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="120.3" cy="194.0" r="4.0" fill="#d98324" stroke="#12151b" stroke-width="1.5"/><text x="120.3" y="194.0" font-family="Helvetica,Arial,sans-serif" font-size="5.0" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">E</text>
+<circle cx="137.3" cy="172.9" r="4.0" fill="#2e9e5b" stroke="#12151b" stroke-width="1.5"/><text x="137.3" y="172.9" font-family="Helvetica,Arial,sans-serif" font-size="5.0" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">X</text>
+<circle cx="180.2" cy="53.1" r="4.0" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="180.2" y="53.1" font-family="Helvetica,Arial,sans-serif" font-size="5.0" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">2</text>
+<circle cx="189.5" cy="26.0" r="4.0" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="189.5" y="26.0" font-family="Helvetica,Arial,sans-serif" font-size="5.0" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">3</text>
+<circle cx="102.7" cy="175.7" r="4.0" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="102.7" y="175.7" font-family="Helvetica,Arial,sans-serif" font-size="5.0" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">4</text>
+<circle cx="30.5" cy="155.4" r="4.0" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="30.5" y="155.4" font-family="Helvetica,Arial,sans-serif" font-size="5.0" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">5</text>
+<circle cx="126.9" cy="178.1" r="5.5" fill="#e02424" stroke="#fff" stroke-width="1.5"/><text x="126.9" y="178.1" font-family="Helvetica,Arial,sans-serif" font-size="4.3" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">S/F</text>
+</svg>

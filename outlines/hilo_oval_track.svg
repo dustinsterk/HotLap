@@ -1,0 +1,12 @@
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+<rect width="220" height="220" rx="14" fill="#12151b"/>
+<path d="M146.4,191.0 L143.8,193.0" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M157.9,183.0 L157.8,183.2 L157.4,184.2 L156.8,184.7 L150.9,188.2 L148.6,189.6 L146.4,191.0 L144.9,190.7 L144.8,189.6 L145.4,186.6 L145.3,186.4 L144.5,184.7 L143.4,184.7 L142.7,185.1 L142.1,185.8 L141.2,186.5 L140.2,187.7" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M151.9,191.3 L150.9,188.2 L150.8,188.1 L150.0,187.9 L149.2,188.1 L148.6,188.8 L148.6,189.6" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M157.9,183.0 L157.8,182.2 L157.4,181.3 L156.8,180.2 L153.7,175.2 L68.3,41.3 L59.2,27.0 L59.0,26.6" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M140.2,187.7 L139.6,189.1 L140.5,190.2 L142.2,191.2 L143.8,193.0 L146.9,194.0 L148.2,193.8 L151.9,191.3 L160.3,185.8 L161.0,184.9 L161.0,184.3 L160.9,183.6 L155.0,174.4 L69.4,40.5 L60.3,26.3 L60.1,26.0" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M140.2,187.7 L141.8,188.0 L143.2,187.8 L143.3,186.7 L142.7,185.1" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M126.6,152.5 L124.5,152.0 L123.1,152.3 L121.6,153.5 L120.8,155.5 L121.0,158.4 L128.6,169.4 L130.5,170.6 L133.1,170.6 L134.9,169.7 L135.8,168.2 L135.9,166.1 L134.8,163.1 L131.2,157.4 L127.6,153.3 L126.6,152.5" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="133.2" cy="160.5" r="4.0" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="133.2" y="160.5" font-family="Helvetica,Arial,sans-serif" font-size="5.0" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">2</text>
+<circle cx="125.5" cy="164.9" r="5.5" fill="#e02424" stroke="#fff" stroke-width="1.5"/><text x="125.5" y="164.9" font-family="Helvetica,Arial,sans-serif" font-size="4.3" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">S/F</text>
+</svg>

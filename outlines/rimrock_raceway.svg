@@ -1,0 +1,7 @@
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+<rect width="220" height="220" rx="14" fill="#12151b"/>
+<path d="M119.7,92.6 L119.2,88.7 L117.4,79.0" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M113.5,79.9 L62.0,98.7 L59.0,101.1 L57.5,103.9 L56.6,106.6 L56.3,109.3 L56.3,112.0 L57.2,114.5 L58.4,117.2 L61.3,120.1 L64.7,121.7 L67.3,123.2 L69.1,125.6 L69.3,128.4 L67.8,131.1 L66.2,133.2 L62.9,137.5 L62.9,142.3 L64.4,146.3 L66.4,149.8 L67.5,152.0 L70.4,154.1 L75.2,154.0 L78.2,151.9 L112.3,135.4 L113.2,132.0 L111.7,128.1 L106.8,125.1 L102.6,123.2 L99.3,122.3 L77.8,115.7 L76.2,111.4 L76.2,109.0 L79.3,105.7 L85.2,103.2 L117.9,92.6 L119.7,92.6 L120.8,96.3 L127.1,111.7 L129.7,111.9 L135.0,114.5 L138.5,115.9 L140.1,119.0 L142.6,125.4 L143.5,127.2 L145.6,128.1 L149.2,128.1 L150.7,124.2 L148.9,120.8 L134.0,78.0 L128.3,76.3 L122.9,76.3 L119.8,77.5 L117.4,79.0 L113.5,79.9" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M26.0,92.2 L151.7,44.0 L168.1,72.3 L182.8,93.4 L194.0,126.6 L61.5,176.0 L26.0,92.2" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="149.1" cy="103.6" r="5.5" fill="#e02424" stroke="#fff" stroke-width="1.5"/><text x="149.1" y="103.6" font-family="Helvetica,Arial,sans-serif" font-size="4.3" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">S/F</text>
+</svg>

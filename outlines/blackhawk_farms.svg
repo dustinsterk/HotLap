@@ -1,0 +1,26 @@
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+<rect width="220" height="220" rx="14" fill="#12151b"/>
+<path d="M26.9,54.4 L26.0,164.5 L163.0,165.6 L163.2,138.0 L193.9,138.3 L194.0,121.3 L100.5,120.6 L100.6,108.6 L101.1,55.0 L26.9,54.4" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M97.2,74.4 L96.8,75.2 L96.2,76.2 L95.0,78.0 L94.0,79.3 L93.2,80.4 L92.2,81.4 L91.3,82.0 L90.0,82.6 L89.0,83.1 L88.0,83.6 L87.4,84.1 L86.8,84.6 L86.3,85.2 L80.8,92.0" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M30.2,148.8 L30.9,144.0 L31.8,130.3 L32.9,100.8 L32.8,99.9 L32.5,96.3 L32.0,85.6" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M36.6,160.7 L34.0,160.6 L32.6,160.4 L31.8,160.2 L31.2,159.9 L30.6,159.3 L30.1,158.3 L29.8,157.3 L29.8,155.9" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M98.1,126.9 L98.0,131.9 L97.7,135.5 L97.4,136.8 L97.1,138.4 L96.5,140.0 L96.0,141.3 L95.2,142.3 L94.1,143.2 L92.6,144.1 L90.9,145.1 L87.8,146.6 L83.7,148.3 L67.9,154.3 L59.3,157.7 L55.0,159.3 L53.6,159.8 L52.3,160.2 L51.0,160.5 L49.6,160.7 L48.2,160.7 L36.6,160.7" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M93.1,122.7 L94.3,122.8 L95.7,123.2 L96.7,123.8 L97.5,124.8 L97.9,125.7 L98.1,126.9" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M72.3,122.4 L93.1,122.7" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M56.3,112.6 L56.9,114.1 L57.5,115.3 L58.1,116.3 L58.9,117.3 L60.0,118.4 L61.1,119.1 L62.4,119.9 L63.9,120.6 L65.3,121.1 L66.8,121.5 L68.2,121.9 L70.1,122.2 L72.3,122.4" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M56.3,98.5 L55.6,103.3 L55.4,105.7 L55.4,107.4 L55.5,109.2 L55.9,110.9 L56.3,112.6" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M60.2,93.1 L59.1,93.4 L58.3,93.8 L57.7,94.3 L57.3,94.9 L56.9,95.6 L56.7,96.2 L56.3,98.5" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M29.8,155.9 L30.2,148.8 L31.6,99.8 L32.0,85.6 L32.4,72.9" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M32.4,72.9 L32.5,71.7 L33.1,70.2 L33.9,69.1 L34.9,68.4 L35.9,67.9 L36.9,67.7 L40.2,67.4 L43.0,67.3" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M43.0,67.3 L47.5,67.4 L48.8,67.4 L50.0,67.6 L51.3,67.8 L53.5,68.3 L56.3,68.9 L58.5,69.1 L62.2,69.2" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M85.9,60.9 L88.2,60.2 L89.7,59.9 L90.6,59.9 L91.4,60.0 L92.6,60.4 L93.8,60.9 L95.0,61.7 L96.3,63.0 L97.1,64.5 L97.7,66.1 L98.0,67.5 L98.2,68.9 L98.3,70.3 L98.0,71.7 L97.7,73.0 L97.2,74.4" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M67.9,91.3 L65.2,92.0 L60.2,93.1" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M80.8,92.0 L80.2,92.7 L79.6,93.2 L79.0,93.6 L78.4,93.7 L77.9,93.8 L77.2,93.7 L76.4,93.5 L75.5,93.0 L72.5,91.4 L71.6,91.1 L70.7,90.9 L69.9,90.9 L67.9,91.3" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M78.7,64.3 L82.5,62.3 L85.9,60.9" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M62.2,69.2 L66.4,69.2 L69.1,69.1 L70.2,69.0 L71.4,68.5 L72.3,68.1 L73.9,67.2 L78.7,64.3" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="36.5" cy="122.5" r="4.0" fill="#d98324" stroke="#12151b" stroke-width="1.5"/><text x="36.5" y="122.5" font-family="Helvetica,Arial,sans-serif" font-size="5.0" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">E</text>
+<circle cx="36.2" cy="103.0" r="4.0" fill="#2e9e5b" stroke="#12151b" stroke-width="1.5"/><text x="36.2" y="103.0" font-family="Helvetica,Arial,sans-serif" font-size="5.0" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">X</text>
+<circle cx="64.4" cy="92.0" r="4.0" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="64.4" y="92.0" font-family="Helvetica,Arial,sans-serif" font-size="5.0" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">2</text>
+<circle cx="86.9" cy="147.2" r="4.0" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="86.9" y="147.2" font-family="Helvetica,Arial,sans-serif" font-size="5.0" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">3</text>
+<circle cx="31.7" cy="98.3" r="5.5" fill="#e02424" stroke="#fff" stroke-width="1.5"/><text x="31.7" y="98.3" font-family="Helvetica,Arial,sans-serif" font-size="4.3" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">S/F</text>
+</svg>

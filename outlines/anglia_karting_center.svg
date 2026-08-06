@@ -1,0 +1,11 @@
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+<rect width="220" height="220" rx="14" fill="#12151b"/>
+<path d="M163.8,164.9 L163.3,159.1 L161.1,153.0 L151.3,147.3 L114.5,128.6 L108.2,123.2 L107.5,111.3 L112.3,103.6 L113.2,95.7 L108.4,88.7 L103.6,83.6 L101.8,77.7 L102.8,68.8 L100.2,58.6 L96.4,51.8 L90.0,46.5 L84.4,44.1 L76.2,42.9 L34.8,53.7 L29.2,59.0 L26.0,65.4 L26.9,72.4 L28.5,78.5 L34.6,82.6 L94.7,115.1 L98.5,120.3 L100.2,128.0 L97.7,134.5 L96.4,146.2 L97.2,155.8 L101.8,167.0 L108.3,174.0 L118.5,179.0 L126.2,181.2 L155.4,173.0 L161.2,170.4 L163.8,164.9" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M76.2,42.9 L109.2,38.8 L123.1,39.5 L132.8,47.4 L134.0,57.2 L131.0,63.6 L125.7,65.8 L120.5,62.8 L112.6,60.9 L106.6,62.1 L102.8,68.8" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M132.8,47.4 L139.2,54.5 L146.4,55.7 L152.3,53.4 L158.0,51.2 L169.2,45.5 L182.0,47.4 L188.4,53.0 L192.9,62.4 L194.0,75.9 L190.2,78.2 L183.5,72.9 L182.0,64.7 L177.9,58.3 L171.9,57.9 L166.2,62.8 L166.6,72.2 L171.9,80.1 L183.5,88.7 L192.1,96.6 L193.2,104.1 L189.5,113.1 L180.1,121.3 L172.6,122.8 L167.2,120.5 L164.0,119.1 L155.0,110.8 L145.2,100.8 L143.0,98.4 L136.8,91.4 L131.0,74.8 L125.7,65.8" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M161.2,170.4 L176.0,172.0 L183.0,171.6 L186.0,166.9 L188.3,164.5" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M136.8,91.4 L152.3,53.4" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M167.2,120.5 L166.9,110.0 L169.0,99.2 L160.8,90.3 L151.5,94.1 L145.2,100.8" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M194.0,75.9 L193.2,104.1" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="153.4" cy="146.6" r="5.5" fill="#e02424" stroke="#fff" stroke-width="1.5"/><text x="153.4" y="146.6" font-family="Helvetica,Arial,sans-serif" font-size="4.3" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">S/F</text>
+</svg>

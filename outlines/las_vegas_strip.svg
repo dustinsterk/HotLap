@@ -1,0 +1,17 @@
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+<rect width="220" height="220" rx="14" fill="#12151b"/>
+<path d="M165.4,192.4 L165.5,183.3 L165.5,158.6 L129.3,158.2 L129.0,158.6 L129.3,184.2 L129.2,191.9 L133.9,191.8 L135.2,192.5 L165.4,192.4" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M156.7,162.2 L155.7,161.7 L154.5,161.4 L152.7,161.1 L151.0,161.2 L149.5,161.6 L148.0,162.4 L145.8,163.9 L142.4,167.2 L141.2,168.0 L139.9,168.4 L138.2,168.7 L136.8,168.6" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M128.7,194.0 L129.4,193.2 L129.8,192.8 L130.2,192.4 L131.7,191.5 L132.9,190.8 L133.5,190.1 L134.8,188.1 L135.4,187.7 L136.1,187.5 L137.3,187.4 L138.1,187.1 L138.6,186.4 L156.2,166.7 L156.7,165.6 L156.7,165.0 L156.5,164.1 L155.9,163.2 L154.5,161.4" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M139.8,186.9 L145.4,180.5" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M136.8,168.6 L135.3,168.2 L134.0,167.6 L132.6,166.9 L131.1,165.6 L129.9,164.0 L128.5,161.3" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M158.0,166.0 L158.2,165.0 L158.2,164.2 L157.6,163.1 L156.7,162.2" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M145.4,180.5 L157.2,167.2 L158.0,166.0" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M128.7,194.0 L130.8,193.2 L131.9,192.8 L133.4,192.1 L135.0,191.4 L136.3,190.5 L137.5,189.5 L138.7,188.1 L139.8,186.9" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="127.5" cy="126.8" r="4.0" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="127.5" y="126.8" font-family="Helvetica,Arial,sans-serif" font-size="5.0" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">2</text>
+<circle cx="140.3" cy="46.5" r="4.0" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="140.3" y="46.5" font-family="Helvetica,Arial,sans-serif" font-size="5.0" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">3</text>
+<circle cx="76.8" cy="26.0" r="4.0" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="76.8" y="26.0" font-family="Helvetica,Arial,sans-serif" font-size="5.0" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">4</text>
+<circle cx="54.5" cy="124.6" r="4.0" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="54.5" y="124.6" font-family="Helvetica,Arial,sans-serif" font-size="5.0" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">5</text>
+<circle cx="78.8" cy="193.2" r="4.0" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="78.8" y="193.2" font-family="Helvetica,Arial,sans-serif" font-size="5.0" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">6</text>
+<circle cx="148.6" cy="175.8" r="5.5" fill="#e02424" stroke="#fff" stroke-width="1.5"/><text x="148.6" y="175.8" font-family="Helvetica,Arial,sans-serif" font-size="4.3" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">S/F</text>
+</svg>

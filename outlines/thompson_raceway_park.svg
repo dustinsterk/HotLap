@@ -1,0 +1,10 @@
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+<rect width="220" height="220" rx="14" fill="#12151b"/>
+<path d="M29.2,102.4 L92.2,102.7" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M61.4,136.7 L61.7,138.3 L61.9,138.7 L62.5,139.0 L63.5,139.0 L76.5,134.9 L77.5,134.1 L78.0,133.3 L78.0,132.2 L77.8,131.1 L77.2,130.3 L76.3,129.8 L75.3,129.6 L73.7,129.7 L72.7,129.4 L71.4,129.0 L70.2,128.0 L68.0,126.4 L67.2,126.2 L66.1,126.2 L65.3,126.8 L64.4,127.8 L61.4,132.6 L61.2,133.5 L61.4,136.7" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M26.0,79.8 L26.5,79.8 L47.2,80.7 L47.4,74.1 L62.0,74.8 L62.0,86.4 L67.6,86.6 L98.3,87.3 L98.2,101.2 L193.8,103.4 L194.0,112.7 L184.0,113.4 L169.3,116.8 L163.0,116.8 L159.0,115.1 L154.2,112.4 L150.4,112.4 L145.2,113.4 L135.6,111.6 L122.0,111.3 L106.8,113.9 L107.4,130.5 L86.9,130.1 L85.1,136.0 L78.7,136.6 L72.8,141.3 L71.2,145.5 L27.2,145.9 L26.7,145.9 L26.4,117.8 L26.4,116.6 L26.0,84.5 L26.0,79.8" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M29.3,103.7 L92.3,103.9" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M64.4,127.8 L64.2,129.1 L64.4,130.0 L65.8,132.0 L66.2,132.9 L66.2,133.9 L65.7,134.4 L65.0,134.5 L64.3,134.1 L63.5,133.2 L62.9,132.6 L62.3,132.6 L61.7,132.9 L61.2,133.5" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="66.7" cy="125.9" r="4.0" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="66.7" y="125.9" font-family="Helvetica,Arial,sans-serif" font-size="5.0" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">2</text>
+<circle cx="68.3" cy="137.3" r="5.5" fill="#e02424" stroke="#fff" stroke-width="1.5"/><text x="68.3" y="137.3" font-family="Helvetica,Arial,sans-serif" font-size="4.3" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">S/F</text>
+</svg>
