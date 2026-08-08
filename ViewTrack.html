@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HotLap — View Track</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+  html,body{margin:0;height:100%;background:#0d1117;color:#e6edf3;
+    font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  #map{position:absolute;inset:0}
+  .hdr{position:absolute;top:0;left:0;right:0;z-index:1000;background:rgba(13,17,23,.82);
+    padding:10px 14px;font-weight:600;border-bottom:1px solid #2a3038;backdrop-filter:blur(4px)}
+  .hdr .hot{color:#ff5a1f}
+  .hdr .sub{font-weight:400;color:#8b949e;font-size:.82rem;margin-top:2px}
+  .legend{position:absolute;bottom:12px;left:12px;z-index:1000;background:rgba(13,17,23,.85);
+    border:1px solid #2a3038;border-radius:8px;padding:8px 10px;font-size:.78rem;color:#e6edf3}
+  .legend .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:middle}
+  .mk{border-radius:50%;border:2px solid #12151b;box-shadow:0 0 0 1px #0008;
+    text-align:center;color:#fff;font-weight:700;font-size:11px;line-height:15px}
+  .err{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    text-align:center;color:#8b949e;padding:24px}
+</style>
+</head>
+<body>
+<div class="hdr"><span class="hot">Hot</span>Lap — <span id="nm">Track</span>
+  <div class="sub">S/F, sector &amp; pit points on satellite imagery</div></div>
+<div id="map"></div>
+<div class="legend">
+  <span class="dot" style="background:#e02424"></span>S/F&nbsp;&nbsp;
+  <span class="dot" style="background:#2f6feb"></span>Sector&nbsp;&nbsp;
+  <span class="dot" style="background:#d98324"></span>Pit in&nbsp;&nbsp;
+  <span class="dot" style="background:#8b5cf6"></span>Pit S/F&nbsp;&nbsp;
+  <span class="dot" style="background:#2e9e5b"></span>Pit out
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const P = new URLSearchParams(location.search);
+function pt(s){ if(!s) return null; const a=s.split(","); const la=parseFloat(a[0]), lo=parseFloat(a[1]);
+  return (isNaN(la)||isNaN(lo))?null:[la,lo]; }
+function pts(s){ return (s? s.split(";"):[]).map(pt).filter(Boolean); }
+
+const sf   = pt(P.get("sf"));
+const secs = pts(P.get("sec"));
+const pe   = pt(P.get("pe")), psf = pt(P.get("psf")), px = pt(P.get("px"));
+const name = P.get("n");
+if(name){ document.getElementById("nm").textContent = name; document.title = "HotLap — " + name; }
+
+if(!sf){
+  document.getElementById("map").outerHTML =
+    '<div class="err">No track data in the link. Open this from the watch’s “View Track”.</div>';
+} else {
+  const map = L.map("map",{zoomControl:true});
+  L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+    {maxZoom:20, attribution:"Tiles &copy; Esri"}).addTo(map);
+  const all = [];
+  function mark(ll, cls, color, label, size){
+    if(!ll) return;
+    const s = size||18;
+    const icon = L.divIcon({className:"", iconSize:[s,s], iconAnchor:[s/2,s/2],
+      html:'<div class="mk" style="width:'+s+'px;height:'+s+'px;line-height:'+(s-4)+
+        'px;background:'+color+'">'+(label||"")+'</div>'});
+    L.marker(ll,{icon:icon}).addTo(map).bindPopup(cls);
+    all.push(ll);
+  }
+  // lap-order guide: S/F -> sectors -> S/F
+  if(secs.length){
+    L.polyline([sf].concat(secs).concat([sf]),
+      {color:"#ffffff",weight:2,opacity:.5,dashArray:"5,6"}).addTo(map);
+  }
+  secs.forEach(function(p,i){ mark(p,"Sector "+(i+2),"#2f6feb",String(i+2),18); });
+  mark(pe, "Pit entry", "#d98324", "E", 16);
+  mark(psf,"Pit S/F",   "#8b5cf6", "P", 16);
+  mark(px, "Pit exit",  "#2e9e5b", "X", 16);
+  mark(sf, "Start / Finish", "#e02424", "S/F", 22);
+  map.fitBounds(L.latLngBounds(all).pad(0.25));
+  if(all.length===1) map.setView(sf, 16);
+}
+</script>
+</body>
+</html>
