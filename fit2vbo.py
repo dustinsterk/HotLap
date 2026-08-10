@@ -279,6 +279,8 @@ def read_laps(path):
                 "sectors": [v.get("sector%d" % i) for i in range(1, 9)],
                 "pit": v.get("pit_time"),                     # s
                 "flag": v.get("lap_flag"),                    # 0/1/2
+                "max_lat_g": v.get("lap_max_lat_g"),          # g
+                "max_brake_g": v.get("lap_max_brake_g"),      # g
             })
     except Exception:
         pass
@@ -288,7 +290,9 @@ def read_laps(path):
 def read_session(path):
     """Session-scope HotLap fields (track name, pit aggregates, best laps)."""
     keys = ("track", "pit_count", "pit_best", "pit_total",
-            "best_lap", "theoretical_best", "max_g")
+            "best_lap", "theoretical_best", "max_g",
+            "max_speed", "avg_speed", "max_lat_g", "max_brake_g",
+            "max_accel_g", "max_temp")
     out = {}
     try:
         fit = fitparse.FitFile(path)
@@ -335,10 +339,22 @@ def meta_comment_lines(laps, session):
                          % fmt_lap_time(session.get("theoretical_best")))
         if session.get("max_g") is not None:
             extra.append("max G %.2f" % float(session.get("max_g")))
+        if session.get("max_speed") is not None:
+            extra.append("max spd %.1f" % float(session.get("max_speed")))
+        if session.get("avg_speed") is not None:
+            extra.append("avg spd %.1f" % float(session.get("avg_speed")))
+        if session.get("max_lat_g") is not None:
+            extra.append("max lat %.2fg" % float(session.get("max_lat_g")))
+        if session.get("max_brake_g") is not None:
+            extra.append("max brake %.2fg" % float(session.get("max_brake_g")))
+        if session.get("max_accel_g") is not None:
+            extra.append("max accel %.2fg" % float(session.get("max_accel_g")))
+        if session.get("max_temp") is not None:
+            extra.append("max temp %.0f" % float(session.get("max_temp")))
         if extra:
             out.append("Session: " + " | ".join(extra))
     if laps:
-        out.append("Lap detail (time | sectors s | pit):")
+        out.append("Lap detail (time | sectors s | pit | max G):")
         flag_lbl = {1: " (in)", 2: " (out)"}
         for i, l in enumerate(laps):
             secs = [x for x in l["sectors"] if x is not None]
@@ -346,9 +362,16 @@ def meta_comment_lines(laps, session):
                 if secs else ""
             pit = l.get("pit")
             ppart = ("  pit %.1f" % float(pit)) if pit else ""
+            mlg = l.get("max_lat_g"); mbg = l.get("max_brake_g")
+            gs = []
+            if mlg is not None:
+                gs.append("lat %.2f" % float(mlg))
+            if mbg is not None:
+                gs.append("brk %.2f" % float(mbg))
+            gpart = ("  G(" + "/".join(gs) + ")") if gs else ""
             lbl = flag_lbl.get(l.get("flag") or 0, "")
-            out.append("Lap %d  %s  %s%s%s"
-                       % (i + 1, fmt_lap_time(l.get("time")), spart, ppart, lbl))
+            out.append("Lap %d  %s  %s%s%s%s"
+                       % (i + 1, fmt_lap_time(l.get("time")), spart, ppart, gpart, lbl))
     return out
 
 
