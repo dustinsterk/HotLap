@@ -23,6 +23,8 @@ nav{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;
 nav .brand{display:flex;align-items:center;gap:10px;margin:0 8px 14px}
 nav .brand .dot{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(255,90,60,.18)}
 nav .brand b{font-size:18px;letter-spacing:.5px}
+nav .brand a{color:inherit;text-decoration:none}
+nav .brand a:hover b{text-decoration:underline}
 nav a{display:block;color:var(--muted);padding:5px 12px;border-radius:6px;font-size:13.5px}
 nav a:hover{background:var(--panel2);color:var(--text);text-decoration:none}
 nav .grp{margin:14px 12px 4px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#6b7280}
@@ -63,7 +65,7 @@ tr:last-child td{border-bottom:none}
 <body>
 <div class="wrap">
 <nav>
-  <div class="brand"><span class="dot"></span><b>HotLap</b></div>
+  <div class="brand"><span class="dot"></span><a href="https://www.thesterk.com/HotLap"><b>HotLap</b></a></div>
   <a href="#overview">Overview</a>
   <a href="#start">Getting started</a>
   <div class="grp">Timing your laps</div>
