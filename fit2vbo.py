@@ -300,6 +300,11 @@ def read_session(path):
             for d in m:
                 if d.name in keys and d.value is not None:
                     out[d.name] = d.value
+                    # keep the recorded unit for speed/temp (km/h vs mph, C vs F)
+                    if d.name in ("max_speed", "avg_speed", "max_temp"):
+                        u = getattr(d, "units", None)
+                        if u:
+                            out[d.name + "_u"] = u
             break        # first session message only
     except Exception:
         pass
@@ -317,6 +322,28 @@ def fmt_lap_time(s):
 
 def fmt_secs(s):
     return "--" if s is None else "%.1fs" % float(s)
+
+
+def fmt_speed(val, unit):
+    """Speed with its recorded unit; add the km/h equivalent when it's mph, so
+    it lines up with the VBO velocity channel (always km/h)."""
+    if val is None:
+        return None
+    v = float(val); u = (unit or "").strip().lower()
+    if u == "mph":
+        return "%.1f mph (%.1f km/h)" % (v, v * 1.609344)
+    if u in ("km/h", "kph", "kmh"):
+        return "%.1f km/h" % v
+    return "%.1f%s" % (v, (" " + unit) if unit else "")
+
+
+def fmt_temp(val, unit):
+    if val is None:
+        return None
+    v = float(val); u = (unit or "").strip().upper()
+    if u in ("C", "F"):
+        return "%.0f°%s" % (v, u)
+    return "%.0f%s" % (v, (" " + unit) if unit else "")
 
 
 def meta_comment_lines(laps, session):
@@ -340,9 +367,11 @@ def meta_comment_lines(laps, session):
         if session.get("max_g") is not None:
             extra.append("max G %.2f" % float(session.get("max_g")))
         if session.get("max_speed") is not None:
-            extra.append("max spd %.1f" % float(session.get("max_speed")))
+            extra.append("max spd " + fmt_speed(session.get("max_speed"),
+                                                 session.get("max_speed_u")))
         if session.get("avg_speed") is not None:
-            extra.append("avg spd %.1f" % float(session.get("avg_speed")))
+            extra.append("avg spd " + fmt_speed(session.get("avg_speed"),
+                                                 session.get("avg_speed_u")))
         if session.get("max_lat_g") is not None:
             extra.append("max lat %.2fg" % float(session.get("max_lat_g")))
         if session.get("max_brake_g") is not None:
@@ -350,7 +379,8 @@ def meta_comment_lines(laps, session):
         if session.get("max_accel_g") is not None:
             extra.append("max accel %.2fg" % float(session.get("max_accel_g")))
         if session.get("max_temp") is not None:
-            extra.append("max temp %.0f" % float(session.get("max_temp")))
+            extra.append("max temp " + fmt_temp(session.get("max_temp"),
+                                                 session.get("max_temp_u")))
         if extra:
             out.append("Session: " + " | ".join(extra))
     if laps:
