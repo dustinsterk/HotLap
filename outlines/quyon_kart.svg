@@ -1,0 +1,26 @@
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+<rect width="220" height="220" rx="14" fill="#12151b"/>
+<path d="M88.2,183.2 L85.6,176.9 L83.5,166.7 L84.7,158.8" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M163.7,127.7 L161.8,135.4 L155.2,142.1 L149.7,143.3 L144.3,141.9 L140.1,137.7 L137.4,130.4 L138.9,121.8 L143.5,112.0" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M94.0,111.2 L71.2,78.8" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M84.7,158.8 L75.0,132.9 L71.2,78.8" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M71.2,78.8 L63.4,68.8" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M113.8,57.9 L115.7,60.6 L119.9,64.7 L121.7,71.7 L121.4,90.6" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M97.7,153.2 L101.7,152.0 L107.9,144.6 L108.4,136.4 L106.8,130.1" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M63.4,68.8 L64.4,60.6 L67.4,55.3 L73.2,53.9 L78.4,55.8 L83.3,57.5 L87.5,57.8 L91.9,55.9 L94.2,47.8 L97.1,44.7 L101.7,42.6 L105.7,42.4 L110.3,44.1 L113.7,47.1 L114.6,50.3 L114.8,54.3 L113.8,57.9" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M113.8,57.9 L106.1,66.7 L105.0,75.5" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M105.0,75.5 L107.3,82.1 L113.8,86.6 L121.1,93.4" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M121.4,90.6 L121.1,93.4 L118.2,119.8 L122.6,133.3 L121.9,140.8 L119.4,149.4 L115.0,157.3 L111.6,163.9" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M111.6,163.9 L111.2,169.5 L114.9,173.8 L118.0,174.4 L121.2,173.4 L127.1,170.4 L133.6,166.9" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M133.6,166.9 L141.0,166.9 L147.6,168.5 L151.2,170.6 L152.2,173.9 L149.7,177.9 L142.7,180.9" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M142.7,180.9 L132.7,184.1 L121.0,188.8 L111.0,193.9" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M84.7,158.8 L86.6,154.9 L89.6,153.4 L92.3,153.8 L97.7,153.2" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M106.8,130.1 L101.0,121.0 L94.0,111.2" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M88.2,183.2 L92.6,189.0 L97.5,192.0 L104.4,194.0 L111.0,193.9" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M63.4,68.8 L57.3,53.6 L56.3,47.5 L57.4,41.8 L60.4,37.3 L64.9,35.1 L71.1,32.0" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M71.1,32.0 L132.4,26.0" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M132.4,26.0 L142.4,28.1 L151.8,32.5 L155.2,38.1 L159.2,45.1 L160.8,52.6" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M160.8,52.6 L161.1,94.9 L163.7,127.7" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M143.5,112.0 L145.1,102.8 L144.4,97.0 L144.1,93.9 L141.2,89.5 L136.2,87.0 L127.4,87.6 L121.4,90.6" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="79.8" cy="94.7" r="7.0" fill="#e02424" stroke="#fff" stroke-width="1.5"/><text x="79.8" y="94.7" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">S/F</text>
+</svg>

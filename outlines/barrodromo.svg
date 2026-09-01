@@ -1,0 +1,10 @@
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+<rect width="220" height="220" rx="14" fill="#12151b"/>
+<path d="M134.4,135.8 L111.0,146.3 L80.7,151.8 L69.3,155.3 L58.3,163.4 L44.1,171.2 L35.0,171.5 L27.0,166.7 L26.0,158.6 L30.2,148.6 L48.9,130.1 L64.1,120.1 L79.6,113.7 L91.9,112.7 L104.5,115.6 L116.5,123.7 L127.1,123.7 L138.4,118.5 L146.5,110.1 L156.2,96.9 L157.5,86.2 L156.2,78.8 L153.3,72.3 L146.2,62.3 L144.2,55.2 L147.2,50.7 L151.5,48.5 L155.9,50.7 L173.4,71.5" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M173.4,71.5 L178.8,88.3 L179.2,96.8 L177.3,100.2 L168.4,105.4 L154.7,112.2 L134.4,135.8" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M173.4,71.5 L191.4,93.0 L194.0,101.1 L193.7,106.6 L191.8,111.2 L186.8,115.1 L174.9,119.9 L146.2,130.5 L134.4,135.8" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="55.4" cy="124.4" r="5.5" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="55.4" y="124.4" font-family="Helvetica,Arial,sans-serif" font-size="6.9" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">2</text>
+<circle cx="139.7" cy="112.4" r="5.5" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="139.7" y="112.4" font-family="Helvetica,Arial,sans-serif" font-size="6.9" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">3</text>
+<circle cx="170.7" cy="68.0" r="5.5" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="170.7" y="68.0" font-family="Helvetica,Arial,sans-serif" font-size="6.9" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">4</text>
+<circle cx="162.0" cy="124.3" r="7.0" fill="#e02424" stroke="#fff" stroke-width="1.5"/><text x="162.0" y="124.3" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">S/F</text>
+</svg>

@@ -1,0 +1,10 @@
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+<rect width="220" height="220" rx="14" fill="#12151b"/>
+<path d="M75.9,30.1 L66.6,56.3 L53.9,92.0 L30.1,158.7 L28.1,170.1 L28.1,179.1 L33.1,189.5 L40.5,194.0 L48.0,192.5 L56.0,187.5 L63.4,180.3 L85.6,158.6 L190.9,55.6 L191.9,46.1 L190.5,34.9 L187.2,31.3 L179.8,27.6 L172.0,26.2 L84.7,26.0 L79.8,26.8 L75.9,30.1" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M66.6,56.3 L68.2,61.0 L71.3,62.6 L75.9,62.6 L126.3,55.8 L133.1,56.5 L138.4,60.4 L141.5,65.3 L141.9,69.0 L140.1,75.4 L124.1,92.1 L101.1,115.9 L96.7,120.5 L92.3,122.7 L84.5,125.2 L75.0,128.7 L69.5,134.7 L68.7,139.4 L69.5,145.8 L72.6,151.6 L78.7,155.3 L85.6,158.6" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M63.4,180.3 L61.5,175.9 L58.2,171.5 L53.2,168.9 L48.5,166.0 L46.6,161.9 L45.0,155.5 L45.8,147.5 L50.3,135.9 L59.4,122.1 L72.0,109.8 L81.4,104.8 L88.4,104.8 L94.0,106.7 L98.9,110.6 L101.1,115.9" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M53.9,92.0 L63.9,85.5 L72.2,83.6 L81.6,84.5 L124.1,92.1" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="124.9" cy="124.0" r="5.5" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="124.9" y="124.0" font-family="Helvetica,Arial,sans-serif" font-size="6.9" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">2</text>
+<circle cx="37.2" cy="134.0" r="5.5" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="37.2" y="134.0" font-family="Helvetica,Arial,sans-serif" font-size="6.9" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">3</text>
+<circle cx="141.5" cy="29.6" r="7.0" fill="#e02424" stroke="#fff" stroke-width="1.5"/><text x="141.5" y="29.6" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">S/F</text>
+</svg>

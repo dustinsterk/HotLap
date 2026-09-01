@@ -1,0 +1,11 @@
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+<rect width="220" height="220" rx="14" fill="#12151b"/>
+<path d="M151.3,69.7 L145.6,63.3 L134.8,56.6 L128.4,56.7 L95.3,57.1 L91.1,57.3 L88.0,60.6 L86.0,65.7 L85.7,68.8 L85.0,75.0" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M52.2,137.8 L50.4,124.9 L52.2,115.6" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M145.0,158.3 L141.7,151.1 L141.0,141.7 L142.4,133.9" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M165.6,68.6 L183.8,69.9 L188.9,72.2 L191.3,74.2 L194.0,80.4 L184.5,135.5 L181.4,143.7 L176.9,150.4 L166.7,154.8 L156.5,157.7 L145.0,158.3 L35.4,163.4 L28.2,160.4 L26.0,155.3 L26.9,149.1 L31.1,144.1 L52.2,137.8 L76.8,127.6 L90.7,127.8 L98.5,131.6 L106.0,134.4 L142.4,133.9 L153.0,133.8 L161.0,132.2 L165.0,130.2 L168.7,120.5 L171.6,103.4 L169.5,95.5 L164.5,89.2 L158.3,87.9 L153.2,89.0 L148.2,93.9 L145.0,100.3 L135.3,106.7 L127.7,107.4 L119.5,102.5 L114.1,96.4 L104.9,93.0 L86.5,95.4 L79.2,98.8 L70.8,107.2 L61.9,114.9 L52.2,115.6 L44.2,109.2 L42.6,89.4 L44.4,82.3 L53.5,78.1 L70.1,76.1 L85.0,75.0 L151.3,69.7 L165.6,68.6" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M85.7,68.8 L76.7,66.2 L60.3,65.7 L50.1,67.3 L47.2,68.6 L45.5,70.8 L44.4,82.3" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="134.3" cy="133.0" r="5.5" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="134.3" y="133.0" font-family="Helvetica,Arial,sans-serif" font-size="6.9" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">2</text>
+<circle cx="91.7" cy="159.2" r="5.5" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="91.7" y="159.2" font-family="Helvetica,Arial,sans-serif" font-size="6.9" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">3</text>
+<circle cx="107.1" cy="70.7" r="7.0" fill="#e02424" stroke="#fff" stroke-width="1.5"/><text x="107.1" y="70.7" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">S/F</text>
+</svg>

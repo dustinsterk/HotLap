@@ -1,0 +1,10 @@
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+<rect width="220" height="220" rx="14" fill="#12151b"/>
+<path d="M89.8,166.2 L87.3,173.0 L87.0,184.7 L90.1,190.9 L95.1,194.0 L104.2,193.4 L126.4,187.2 L154.6,185.0 L161.8,178.7 L163.7,171.2 L160.2,159.0 L145.5,125.5 L138.6,106.1 L137.4,98.9 L134.7,76.7 L131.4,48.9 L128.9,32.9 L118.6,26.0 L110.5,27.3 L103.6,32.9 L100.5,40.1 L101.3,76.7 L102.3,119.3 L100.2,124.9 L94.5,130.8 L74.8,133.6 L62.6,135.8 L56.3,141.8 L56.3,151.8 L60.7,157.4 L70.7,159.0 L81.4,154.0 L123.6,125.5 L130.8,126.4 L136.7,130.8 L142.4,138.9 L145.8,156.5 L141.4,165.2 L135.5,169.3 L125.5,168.4 L98.6,162.4 L93.0,162.4 L89.8,166.2" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M101.3,76.7 L108.0,86.4 L116.7,89.6 L125.8,88.0 L131.1,83.3 L134.7,76.7" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M123.6,125.5 L132.7,118.3 L136.8,111.8 L138.6,106.1" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="102.2" cy="91.5" r="5.5" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="102.2" y="91.5" font-family="Helvetica,Arial,sans-serif" font-size="6.9" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">2</text>
+<circle cx="100.6" cy="140.6" r="5.5" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="100.6" y="140.6" font-family="Helvetica,Arial,sans-serif" font-size="6.9" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">3</text>
+<circle cx="126.2" cy="185.3" r="5.5" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="126.2" y="185.3" font-family="Helvetica,Arial,sans-serif" font-size="6.9" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">4</text>
+<circle cx="135.1" cy="73.2" r="7.0" fill="#e02424" stroke="#fff" stroke-width="1.5"/><text x="135.1" y="73.2" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">S/F</text>
+</svg>

@@ -1,0 +1,6 @@
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+<rect width="220" height="220" rx="14" fill="#12151b"/>
+<path d="M123.2,152.6 L108.0,188.4 L96.0,194.0 L84.4,191.2 L69.8,183.9 L65.0,173.0 L58.4,165.7 L41.8,157.8 L35.1,153.1 L33.1,141.6 L83.1,39.0 L90.4,28.2 L102.6,26.0 L185.2,48.9 L186.9,59.2 L183.6,80.3 L174.1,88.6 L164.8,86.4 L160.1,79.6 L156.4,59.6 L146.8,54.0 L100.5,49.2 L90.8,54.6 L71.8,94.8 L72.1,104.5 L77.9,109.9 L88.4,109.2 L93.5,100.6 L91.2,83.9 L98.5,71.8 L106.8,68.6 L116.6,72.4 L123.2,79.2 L122.6,89.6 L98.2,126.8 L90.5,130.1 L70.9,122.0 L61.1,122.0 L54.1,130.4 L53.4,141.7 L58.6,149.1 L72.3,155.6 L84.1,176.6 L94.5,181.8 L101.8,176.9 L111.0,146.2 L131.8,103.2 L141.9,99.1 L148.8,103.0 L150.1,112.2 L145.4,123.0 L123.2,152.6" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="92.0" cy="88.8" r="5.5" fill="#2f6feb" stroke="#12151b" stroke-width="1.5"/><text x="92.0" y="88.8" font-family="Helvetica,Arial,sans-serif" font-size="6.9" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">2</text>
+<circle cx="51.6" cy="98.3" r="7.0" fill="#e02424" stroke="#fff" stroke-width="1.5"/><text x="51.6" y="98.3" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">S/F</text>
+</svg>
