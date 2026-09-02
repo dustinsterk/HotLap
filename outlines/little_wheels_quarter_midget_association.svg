@@ -1,0 +1,5 @@
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+<rect width="220" height="220" rx="14" fill="#12151b"/>
+<path d="M99.4,50.8 L78.8,51.8 L67.0,54.2 L54.2,58.8 L47.4,63.2 L41.0,68.6 L35.6,75.1 L31.7,81.9 L28.6,89.4 L26.7,97.3 L26.0,105.0 L26.4,112.9 L27.7,120.3 L30.3,127.3 L33.9,133.9 L38.4,139.9 L45.3,146.8 L53.7,152.9 L62.8,158.0 L81.6,164.9 L101.3,168.8 L118.0,169.4 L134.1,167.5 L144.3,165.1 L154.3,161.5 L163.6,156.7 L171.6,150.8 L179.1,143.8 L185.2,136.3 L188.8,130.0 L191.5,123.4 L193.3,116.5 L194.0,109.5 L193.9,102.4 L192.8,95.5 L190.7,88.7 L187.6,82.1 L183.9,76.3 L179.2,70.9 L173.8,66.1 L167.8,62.1 L159.7,57.9 L150.7,54.7 L140.6,52.4 L112.2,50.6 L99.4,50.8" fill="none" stroke="#c9ced8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="99.4" cy="50.8" r="7.0" fill="#e02424" stroke="#fff" stroke-width="1.5"/><text x="99.4" y="50.8" font-family="Helvetica,Arial,sans-serif" font-size="5.5" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="central">S/F</text>
+</svg>
