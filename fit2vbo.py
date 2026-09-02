@@ -276,6 +276,7 @@ def read_laps(path):
             v = {d.name: d.value for d in m}
             laps.append({
                 "time": v.get("total_elapsed_time"),          # s
+                "start_time": v.get("start_time"),            # datetime, lap start
                 "sectors": [v.get("sector%d" % i) for i in range(1, 9)],
                 "pit": v.get("pit_time"),                     # s
                 "flag": v.get("lap_flag"),                    # 0/1/2
@@ -405,18 +406,87 @@ def meta_comment_lines(laps, session):
     return out
 
 
+def tag_laps(rows, laps):
+    """Tag each row with a Lap/LapNumber and SectorNumber, matching the columns
+    Circuit Tools exports (which is what your analysis tool reads to show laps):
+      LapNumber    0 before the first S/F crossing (out-lap), then 1, 2, 3, ...
+      SectorNumber 1..M within a lap (by cumulative sector time), 0 when the lap
+                   has no recorded sectors (out-lap or the partial final lap).
+    HotLap records the leading out-lap as its own FIT lap, so lap numbering keys
+    off whether the first FIT lap has sectors (out-lap) or not. VERIFY on your
+    data: if lap 1 doesn't line up with your first flying lap, the out-lap
+    handling here needs adjusting."""
+    for r in rows:
+        r["lap_no"] = 0
+        r["sec_no"] = 0
+    if not laps:
+        return
+    # If the first FIT lap already has sectors it's a real timed lap (no leading
+    # out-lap recorded) -> number from 1. Otherwise the first lap IS the out-lap.
+    first_secs = [x for x in laps[0]["sectors"] if x is not None]
+    offset = 1 if first_secs else 0
+
+    bounds = []
+    for l in laps:
+        st = l.get("start_time")
+        dur = l.get("time")
+        if st is not None and dur is not None:
+            bounds.append((st, st + dt.timedelta(seconds=float(dur))))
+        else:
+            bounds.append(None)
+
+    last_end = None
+    last_num = offset - 1
+    for i, b in enumerate(bounds):
+        if b is not None:
+            last_end = b[1]
+            last_num = i + offset
+
+    for r in rows:
+        ts = r["ts"]
+        placed = False
+        for i, b in enumerate(bounds):
+            if b is None:
+                continue
+            (s0, s1) = b
+            if s0 <= ts and ts < s1:
+                r["lap_no"] = i + offset
+                secs = [x for x in laps[i]["sectors"] if x is not None]
+                if secs:
+                    acc = s0
+                    sn = len(secs)              # default: final sector
+                    for k, sd in enumerate(secs):
+                        nxt = acc + dt.timedelta(seconds=float(sd))
+                        if ts < nxt:
+                            sn = k + 1
+                            break
+                        acc = nxt
+                    r["sec_no"] = sn
+                placed = True
+                break
+        # Rows past the last completed lap = the partial in-progress lap.
+        if not placed and last_end is not None and ts >= last_end:
+            r["lap_no"] = last_num + 1
+            r["sec_no"] = 0
+
+
 def write_vbo(rows, out_path, gate=None, laps=None, session=None):
+    tag_laps(rows, laps or [])
     created = dt.datetime.now()
     # Channel list (header) and matching short column tokens (data order).
     header_channels = [
         "satellites", "time", "latitude", "longitude",
         "velocity kmh", "heading", "height",
-        "LongAcc", "LatAcc", "heart_rate",
+        "LongAcc", "LatAcc",
+        "Lap", "Lap Number", "Sector Number",
+        "heart_rate",
     ]
     columns = [
         "sats", "time", "lat", "long",
         "velocity", "heading", "height",
-        "LongAcc", "LatAcc", "heart_rate",
+        "LongAcc", "LatAcc",
+        "Lap", "LapNumber", "SectorNumber",
+        "heart_rate",
     ]
 
     # Optional extra channels, included only if the FIT actually has data.
@@ -478,6 +548,9 @@ def write_vbo(rows, out_path, gate=None, laps=None, session=None):
             "%.2f" % height,
             "%+.4f" % r["LongAcc"],
             "%+.4f" % r["LatAcc"],
+            "%d" % r.get("lap_no", 0),      # Lap (== LapNumber, per the export)
+            "%d" % r.get("lap_no", 0),      # LapNumber
+            "%d" % r.get("sec_no", 0),      # SectorNumber
             "%d" % hr,
         ]
         if has_alt:
