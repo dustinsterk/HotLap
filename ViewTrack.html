@@ -63,11 +63,7 @@ if(!sf){
     L.marker(ll,{icon:icon}).addTo(map).bindPopup(cls);
     all.push(ll);
   }
-  // lap-order guide: S/F -> sectors -> S/F
-  if(secs.length){
-    L.polyline([sf].concat(secs).concat([sf]),
-      {color:"#ffffff",weight:2,opacity:.5,dashArray:"5,6"}).addTo(map);
-  }
+  // (Lap-order guide line removed -- show just the points, no connecting lines.)
   secs.forEach(function(p,i){ mark(p,"Sector "+(i+2),"#2f6feb",String(i+2),18); });
   mark(pe, "Pit entry", "#d98324", "E", 16);
   mark(psf,"Pit S/F",   "#8b5cf6", "P", 16);
