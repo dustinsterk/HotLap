@@ -41,6 +41,7 @@ function pt(s){ if(!s) return null; const a=s.split(","); const la=parseFloat(a[
 function pts(s){ return (s? s.split(";"):[]).map(pt).filter(Boolean); }
 
 const sf   = pt(P.get("sf"));
+const fin  = pt(P.get("fin"));          // Stage (point-to-point) finish line
 const secs = pts(P.get("sec"));
 const pe   = pt(P.get("pe")), psf = pt(P.get("psf")), px = pt(P.get("px"));
 const name = P.get("n");
@@ -68,7 +69,14 @@ if(!sf){
   mark(pe, "Pit entry", "#d98324", "E", 16);
   mark(psf,"Pit S/F",   "#8b5cf6", "P", 16);
   mark(px, "Pit exit",  "#2e9e5b", "X", 16);
-  mark(sf, "Start / Finish", "#e02424", "S/F", 22);
+  // Point-to-point: a distinct finish line -> the red circle is the START, and a
+  // green "F" marks the finish. Circuit tracks (no finish) keep one "S/F" circle.
+  if(fin){
+    mark(sf,  "Start",  "#e02424", "S", 22);
+    mark(fin, "Finish", "#2e9e5b", "F", 22);
+  } else {
+    mark(sf, "Start / Finish", "#e02424", "S/F", 22);
+  }
   map.fitBounds(L.latLngBounds(all).pad(0.25));
   if(all.length===1) map.setView(sf, 16);
 }
