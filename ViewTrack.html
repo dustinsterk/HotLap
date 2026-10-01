@@ -24,15 +24,10 @@
 </head>
 <body>
 <div class="hdr"><span class="hot">Hot</span>Lap — <span id="nm">Track</span>
-  <div class="sub">S/F, sector &amp; pit points on satellite imagery</div></div>
+  <div class="sub">Track points on satellite imagery</div></div>
 <div id="map"></div>
-<div class="legend">
-  <span class="dot" style="background:#e02424"></span>S/F&nbsp;&nbsp;
-  <span class="dot" style="background:#2f6feb"></span>Sector&nbsp;&nbsp;
-  <span class="dot" style="background:#d98324"></span>Pit in&nbsp;&nbsp;
-  <span class="dot" style="background:#8b5cf6"></span>Pit S/F&nbsp;&nbsp;
-  <span class="dot" style="background:#2e9e5b"></span>Pit out
-</div>
+<!-- Built dynamically from the points actually present (see script). -->
+<div class="legend" id="legend"></div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const P = new URLSearchParams(location.search);
@@ -47,10 +42,31 @@ const pe   = pt(P.get("pe")), psf = pt(P.get("psf")), px = pt(P.get("px"));
 const name = P.get("n");
 if(name){ document.getElementById("nm").textContent = name; document.title = "HotLap — " + name; }
 
+// Build the legend from the points actually present. For a point-to-point track
+// the Start (red) and Finish (green) are distinct; a circuit shows one S/F.
+function buildLegend(){
+  var items = [];
+  if(fin){ items.push(["#e02424","Start"]); items.push(["#2e9e5b","Finish"]); }
+  else { items.push(["#e02424","S/F"]); }
+  if(secs.length){ items.push(["#2f6feb","Sector"]); }
+  if(pe||psf||px){
+    items.push(["#d98324","Pit in"]);
+    items.push(["#8b5cf6","Pit S/F"]);
+    items.push(["#2e9e5b","Pit out"]);
+  }
+  var h = "";
+  for(var i=0;i<items.length;i++){
+    h += '<span class="dot" style="background:'+items[i][0]+'"></span>'+items[i][1]+'&nbsp;&nbsp;';
+  }
+  document.getElementById("legend").innerHTML = h;
+}
+
 if(!sf){
+  document.getElementById("legend").style.display = "none";
   document.getElementById("map").outerHTML =
     '<div class="err">No track data in the link. Open this from the watch’s “View Track”.</div>';
 } else {
+  buildLegend();
   const map = L.map("map",{zoomControl:true});
   L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
     {maxZoom:20, attribution:"Tiles &copy; Esri"}).addTo(map);
