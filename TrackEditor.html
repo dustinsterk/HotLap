@@ -47,6 +47,18 @@
   .hint { color:var(--mut); font-size:11px; margin-top:4px; }
   .legend { display:flex; flex-wrap:wrap; gap:10px; font-size:11px; color:var(--mut); margin-top:6px; }
   .dot { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:3px; vertical-align:middle;}
+
+  /* Phones / narrow screens: stack the panel under the map instead of beside it,
+     and make controls comfortably tappable. */
+  @media (max-width: 760px) {
+    .wrap { flex-direction:column; height:auto; }
+    #map { flex:none; height:52vh; min-height:300px; width:100%; }
+    aside { width:100%; flex:none; border-left:none; border-top:1px solid var(--line); }
+    header h1 { font-size:15px; } header p { font-size:11px; }
+    button { padding:10px 10px; font-size:14px; }
+    button.mini { padding:7px 9px; font-size:13px; }
+    input[type=text], input[type=number] { padding:10px 10px; font-size:16px; } /* 16px avoids iOS zoom */
+  }
 </style>
 </head>
 <body>
