@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>HotLap — Track Editor</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<style>
+  :root { --bg:#14161a; --panel:#1d2128; --ink:#e9edf2; --mut:#9aa6b2;
+          --accent:#ffb000; --green:#39d353; --red:#ff5252; --blue:#4d9bff;
+          --purple:#b06dff; --line:#2b313b; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:14px/1.4 -apple-system,Segoe UI,Roboto,sans-serif;
+         background:var(--bg); color:var(--ink); }
+  header { padding:10px 16px; background:#0f1115; border-bottom:1px solid var(--line); }
+  header h1 { margin:0; font-size:16px; } header p { margin:2px 0 0; color:var(--mut); font-size:12px; }
+  .wrap { display:flex; height:calc(100vh - 54px); }
+  #map { flex:1 1 auto; }
+  aside { width:368px; flex:0 0 368px; background:var(--panel);
+          border-left:1px solid var(--line); overflow-y:auto; padding:14px; }
+  .sec { border:1px solid var(--line); border-radius:8px; padding:10px; margin-bottom:12px; }
+  .sec.hide { display:none; }
+  .sec h2 { margin:0 0 8px; font-size:12px; text-transform:uppercase;
+            letter-spacing:.06em; color:var(--mut); }
+  label { display:block; font-size:12px; color:var(--mut); margin:6px 0 2px; }
+  input[type=text], input[type=number] { width:100%; padding:7px 8px; background:#11141a;
+     border:1px solid var(--line); border-radius:6px; color:var(--ink); font-size:13px; }
+  .row { display:flex; gap:8px; } .row > * { flex:1; }
+  button { cursor:pointer; border:1px solid var(--line); background:#232832; color:var(--ink);
+           border-radius:6px; padding:7px 10px; font-size:13px; }
+  button:hover { border-color:#3a4252; }
+  button.on { background:var(--accent); color:#14161a; border-color:var(--accent); font-weight:600; }
+  button.mini { padding:3px 7px; font-size:12px; }
+  .seg { display:flex; gap:0; } .seg button { flex:1; border-radius:0; }
+  .seg button:first-child { border-radius:6px 0 0 6px; }
+  .seg button:last-child { border-radius:0 6px 6px 0; }
+  .pill { display:inline-block; padding:1px 7px; border-radius:10px; font-size:11px; }
+  .pill.set { background:#143d1e; color:var(--green); } .pill.unset { background:#3a1414; color:var(--red); }
+  .coord { font-family:ui-monospace,Menlo,monospace; font-size:12px; color:var(--ink); }
+  ol { margin:6px 0 0; padding-left:20px; } ol li { margin:3px 0; }
+  .slist { display:flex; align-items:center; gap:6px; justify-content:space-between; }
+  #code { width:100%; height:70px; resize:vertical; font-family:ui-monospace,Menlo,monospace;
+          font-size:12px; background:#11141a; color:var(--green); border:1px solid var(--line);
+          border-radius:6px; padding:8px; word-break:break-all; }
+  .err { color:var(--red); font-size:12px; min-height:16px; margin-top:4px; }
+  .err.ok  { color:var(--green); }
+  .hint { color:var(--mut); font-size:11px; margin-top:4px; }
+  .legend { display:flex; flex-wrap:wrap; gap:10px; font-size:11px; color:var(--mut); margin-top:6px; }
+  .dot { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:3px; vertical-align:middle;}
+</style>
+</head>
+<body>
+<header>
+  <h1>HotLap — Track Editor</h1>
+  <p>Build a track, then copy the code into the app's <b>Import Track</b> setting
+     (phone Connect IQ app, or Garmin Express over USB).</p>
+</header>
+<div class="wrap">
+  <div id="map"></div>
+  <aside>
+    <div class="sec">
+      <h2>Track type</h2>
+      <div class="seg">
+        <button id="modeStage" class="on">Stage (A→B)</button>
+        <button id="modeCircuit">Circuit (laps)</button>
+      </div>
+      <div class="hint" id="modeHint">Stage: separate start and finish lines
+        (autocross, rally, hillclimb).</div>
+    </div>
+
+    <div class="sec">
+      <h2>1 · Place on map</h2>
+      <div class="row" id="placeRow"></div>
+      <div class="hint">Click a tool, then click the map. “Add Sector” stays on so you can
+        drop several in order. Markers are draggable.</div>
+      <label>Go to location (lat,lon or Google Maps URL)</label>
+      <div class="row">
+        <input type="text" id="goto" placeholder="41.9286,-73.3810 or paste a Maps link"/>
+        <button class="mini" id="gotoBtn" style="flex:0 0 60px">Go</button>
+      </div>
+      <div class="hint" id="gotoHint">Tip: on google.com/maps, right-click the spot → the
+        first line is “lat, lon”. Shortened goo.gl / maps.app.goo.gl links must be opened
+        first, then paste the full URL.</div>
+      <div class="legend">
+        <span><span class="dot" style="background:#39d353"></span><span id="lgStart">Start</span></span>
+        <span id="lgFinishWrap"><span class="dot" style="background:#ff5252"></span>Finish</span>
+        <span><span class="dot" style="background:#4d9bff"></span>Sector</span>
+        <span><span class="dot" style="background:#ffb000"></span>Direction</span>
+        <span id="lgPitWrap" class="hide"><span class="dot" style="background:#b06dff"></span>Pit</span>
+      </div>
+    </div>
+
+    <div class="sec" id="secStart">
+      <h2 id="startTitle">2 · Start line</h2>
+      <div class="coord" id="startCoord">—</div>
+      <label>Crossing direction <span id="startDirPill" class="pill unset">none</span></label>
+      <div class="row">
+        <button class="mini" id="startDirPick">Pick on map →</button>
+        <button class="mini" id="startDirClear">Clear</button>
+      </div>
+      <div class="hint" id="startDirHint">Optional for a stage. “Pick on map” then click a
+        point <b>ahead</b> in the travel direction.</div>
+    </div>
+
+    <div class="sec" id="secFinish">
+      <h2>3 · Finish line</h2>
+      <div class="coord" id="finishCoord">—</div>
+      <label>Crossing direction <span id="finishDirPill" class="pill unset">none</span></label>
+      <div class="row">
+        <button class="mini" id="finishDirPick">Pick on map →</button>
+        <button class="mini" id="finishDirClear">Clear</button>
+      </div>
+    </div>
+
+    <div class="sec hide" id="secPit">
+      <h2>Pit lane (optional)</h2>
+      <div class="hint">Set all three to enable pit timing, or leave empty. Order:
+        entry → pit start/finish → exit.</div>
+      <div class="row" style="margin-top:6px">
+        <button class="mini" id="pitEBtn">Entry</button>
+        <button class="mini" id="pitSFBtn">Pit S/F</button>
+        <button class="mini" id="pitXBtn">Exit</button>
+      </div>
+      <div class="coord" id="pitCoord" style="margin-top:6px">—</div>
+      <div class="row" style="margin-top:6px">
+        <button class="mini" id="pitClear">Clear pit</button>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h2>4 · Sectors (ordered, ≤8)</h2>
+      <ol id="sectorList"></ol>
+      <div class="hint" id="sectorHint">None yet.</div>
+    </div>
+
+    <div class="sec">
+      <h2>5 · Details</h2>
+      <label>Track name (ASCII, ≤24)</label>
+      <input type="text" id="name" maxlength="24" placeholder="e.g. Dixon AX"/>
+      <label>Catch width (m, 5–100)</label>
+      <input type="number" id="width" value="30" min="5" max="100" step="1"/>
+    </div>
+
+    <div class="sec">
+      <h2>6 · Import code</h2>
+      <textarea id="code" readonly placeholder="Fill in the required points and a name…"></textarea>
+      <div class="err" id="err"></div>
+      <div class="row">
+        <button id="copy">Copy code</button>
+        <button id="reset">Reset all</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+/* ===================== codec (mirror of track_codec.py) ===================== */
+const VER=1, TYPE_CIRCUIT=0, TYPE_STAGE=1, MAX_SECTORS=8, MAX_NAME=24;
+const WIDTH_DM_MIN=50, WIDTH_DM_MAX=1000;
+const B32="0123456789ABCDEFGHJKMNPQRSTVWXYZ";
+
+function crc16(bytes){ let c=0xFFFF;
+  for(const b of bytes){ c^=(b<<8)&0xFFFF;
+    for(let i=0;i<8;i++){ c = (c&0x8000)? ((c<<1)^0x1021)&0xFFFF : (c<<1)&0xFFFF; } }
+  return c&0xFFFF; }
+function b32encode(bytes){ let out="",buf=0,bits=0;
+  for(const b of bytes){ buf=(buf<<8)|b; bits+=8;
+    while(bits>=5){ bits-=5; out+=B32[(buf>>bits)&0x1F]; } }
+  if(bits>0){ out+=B32[(buf<<(5-bits))&0x1F]; }
+  return out; }
+const e6 = d => Math.round(d*1e6);
+function pushU8(a,v){ a.push(v&0xFF); }
+function pushU16(a,v){ a.push((v>>8)&0xFF, v&0xFF); }
+function pushI32(a,v){ v>>>=0; a.push((v>>>24)&0xFF,(v>>>16)&0xFF,(v>>>8)&0xFF,v&0xFF); }
+function pushPt(a,p){ pushI32(a,e6(p[0])); pushI32(a,e6(p[1])); }
+function checkCommon(t){
+  for(const ch of t.name){ if(ch.charCodeAt(0)>127) throw "Name must be ASCII"; }
+  if(t.name.length>MAX_NAME) throw "Name too long";
+  if(t.sectors.length>MAX_SECTORS) throw "Too many sectors";
+  const wdm=Math.round(t.width_m*10);
+  if(wdm<WIDTH_DM_MIN||wdm>WIDTH_DM_MAX) throw "Width must be 5–100 m";
+  return wdm;
+}
+function commonTail(p,sectors,name){
+  pushU8(p,sectors.length);
+  for(const s of sectors) pushPt(p,s);
+  const nb=[]; for(const ch of name) nb.push(ch.charCodeAt(0));
+  pushU8(p,nb.length); for(const b of nb) p.push(b);
+  pushU16(p, crc16(p));
+  return "HLT"+b32encode(p);
+}
+function deg10(h){ return ((Math.round(h*10))%3600+3600)%3600; }
+
+function encodeStage(t){
+  const wdm=checkCommon(t);
+  const sh=t.start_head, fh=t.finish_head;
+  const flags=(sh!=null?1:0)|(fh!=null?2:0);
+  const p=[]; pushU8(p,VER); pushU8(p,TYPE_STAGE); pushU8(p,flags); pushU16(p,wdm);
+  pushPt(p,t.start); if(sh!=null) pushU16(p,deg10(sh));
+  pushPt(p,t.finish); if(fh!=null) pushU16(p,deg10(fh));
+  return commonTail(p,t.sectors,t.name);
+}
+function encodeCircuit(t){
+  const wdm=checkCommon(t);
+  if(t.sf_head==null) throw "Circuit needs a crossing direction";
+  const pit=t.pit;  // array of 3 or null
+  const flags=1|(pit!=null?2:0);
+  const p=[]; pushU8(p,VER); pushU8(p,TYPE_CIRCUIT); pushU8(p,flags); pushU16(p,wdm);
+  pushPt(p,t.sf); pushU16(p,deg10(t.sf_head));
+  if(pit!=null){ for(const pp of pit) pushPt(p,pp); }
+  return commonTail(p,t.sectors,t.name);
+}
+
+/* bearing from A to B in degrees 0..360 */
+function bearing(a,b){
+  const toR=Math.PI/180, toD=180/Math.PI;
+  const y=Math.sin((b[1]-a[1])*toR)*Math.cos(b[0]*toR);
+  const x=Math.cos(a[0]*toR)*Math.sin(b[0]*toR)-
+          Math.sin(a[0]*toR)*Math.cos(b[0]*toR)*Math.cos((b[1]-a[1])*toR);
+  return (Math.atan2(y,x)*toD+360)%360;
+}
+
+/* ===================== map + state ===================== */
+const map=L.map('map').setView([41.9286,-73.3810],15);
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+  {maxZoom:19, maxNativeZoom:19, attribution:'Imagery © Esri, Maxar, Earthstar Geographics'}).addTo(map);
+
+let mode='stage';              // 'stage' | 'circuit'
+let tool=null;
+const S={ start:null, finish:null, startHead:null, finishHead:null, sectors:[],
+          pitE:null, pitSF:null, pitX:null };
+const M={ start:null, finish:null, sectors:[], startArrow:null, finishArrow:null,
+          pitE:null, pitSF:null, pitX:null };
+
+function icon(color,label){ return L.divIcon({className:'',
+  html:`<div style="background:${color};color:#14161a;font-weight:700;border:2px solid #0008;
+        border-radius:50%;width:22px;height:22px;display:flex;align-items:center;
+        justify-content:center;font-size:11px;box-shadow:0 1px 4px #0007">${label}</div>`,
+  iconSize:[22,22], iconAnchor:[11,11] }); }
+
+function setTool(t){ tool=t;
+  var ids={start:'tStart',finish:'tFinish',sector:'tSector',
+           startdir:'startDirPick',finishdir:'finishDirPick',
+           pitE:'pitEBtn',pitSF:'pitSFBtn',pitX:'pitXBtn'};
+  for(var k in ids){ var el=document.getElementById(ids[k]); if(el) el.classList.toggle('on', tool===k); }
+}
+
+/* ---- place tool buttons depend on mode ---- */
+function renderPlaceRow(){
+  var row=document.getElementById('placeRow');
+  if(mode==='stage'){
+    row.innerHTML='<button id="tStart">Set Start</button>'
+                 +'<button id="tSector">Add Sector</button>'
+                 +'<button id="tFinish">Set Finish</button>';
+    document.getElementById('tStart').onclick =()=>setTool(tool==='start'?null:'start');
+    document.getElementById('tFinish').onclick=()=>setTool(tool==='finish'?null:'finish');
+  } else {
+    row.innerHTML='<button id="tStart">Set S/F</button>'
+                 +'<button id="tSector">Add Sector</button>';
+    document.getElementById('tStart').onclick =()=>setTool(tool==='start'?null:'start');
+  }
+  document.getElementById('tSector').onclick=()=>setTool(tool==='sector'?null:'sector');
+}
+
+function applyMode(){
+  var circuit = (mode==='circuit');
+  document.getElementById('modeStage').classList.toggle('on', !circuit);
+  document.getElementById('modeCircuit').classList.toggle('on', circuit);
+  document.getElementById('modeHint').textContent = circuit
+    ? "Circuit: one start/finish line crossed each lap, with a required direction and an optional pit lane."
+    : "Stage: separate start and finish lines (autocross, rally, hillclimb).";
+  document.getElementById('secFinish').classList.toggle('hide', circuit);
+  document.getElementById('secPit').classList.toggle('hide', !circuit);
+  document.getElementById('lgFinishWrap').classList.toggle('hide', circuit);
+  document.getElementById('lgPitWrap').classList.toggle('hide', !circuit);
+  document.getElementById('startTitle').textContent = circuit ? "2 · Start/Finish line" : "2 · Start line";
+  document.getElementById('lgStart').textContent = circuit ? "S/F" : "Start";
+  document.getElementById('startDirHint').innerHTML = circuit
+    ? "<b>Required.</b> “Pick on map” then click a point <b>ahead</b> in the lap direction."
+    : "<b>Required.</b> “Pick on map” then click a point <b>ahead</b> in the travel direction.";
+  renderPlaceRow(); setTool(null); refresh();
+}
+
+document.getElementById('modeStage').onclick  =()=>{ mode='stage';   applyMode(); };
+document.getElementById('modeCircuit').onclick=()=>{ mode='circuit'; applyMode(); };
+
+document.getElementById('startDirPick').onclick =()=>setTool(tool==='startdir'?null:'startdir');
+document.getElementById('finishDirPick').onclick=()=>setTool(tool==='finishdir'?null:'finishdir');
+document.getElementById('startDirClear').onclick =()=>{ S.startHead=null; drawArrows(); refresh(); };
+document.getElementById('finishDirClear').onclick=()=>{ S.finishHead=null; drawArrows(); refresh(); };
+document.getElementById('pitEBtn').onclick =()=>setTool(tool==='pitE'?null:'pitE');
+document.getElementById('pitSFBtn').onclick=()=>setTool(tool==='pitSF'?null:'pitSF');
+document.getElementById('pitXBtn').onclick =()=>setTool(tool==='pitX'?null:'pitX');
+document.getElementById('pitClear').onclick=()=>{ S.pitE=S.pitSF=S.pitX=null; placePit(); refresh(); };
+document.getElementById('name').oninput=refresh;
+document.getElementById('width').oninput=refresh;
+document.getElementById('copy').onclick=()=>{ const c=document.getElementById('code');
+  if(c.value){ navigator.clipboard.writeText(c.value); flash("Copied!"); } };
+document.getElementById('reset').onclick=()=>{ if(confirm("Clear everything?")) location.reload(); };
+// Pull lat/lon out of raw coords OR a pasted Google Maps URL. Checks the precise
+// forms first (pin !3d!4d, viewport @lat,lon, q=/ll= params) before the bare
+// "lat,lon" fallback, and grabs a ,NNz zoom hint from a Maps URL when present.
+function parseLatLon(v){
+  v=(v||"").trim();
+  let m=v.match(/!3d(-?\d+(?:\.\d+)?)!4d(-?\d+(?:\.\d+)?)/);        // place pin
+  if(m) return {lat:+m[1], lon:+m[2], z:17};
+  m=v.match(/@(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)(?:,(\d+(?:\.\d+)?)z)?/); // @view
+  if(m) return {lat:+m[1], lon:+m[2], z: m[3]?Math.round(+m[3]):16};
+  m=v.match(/[?&#](?:q|query|ll|sll|center|destination|daddr)=(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)/i);
+  if(m) return {lat:+m[1], lon:+m[2], z:17};
+  m=v.match(/^\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*$/);    // bare lat,lon
+  if(m) return {lat:+m[1], lon:+m[2], z:17};
+  return null;
+}
+function gotoLoc(){
+  const v=document.getElementById('goto').value;
+  const r=parseLatLon(v);
+  const err=document.getElementById('err');
+  if(r && Math.abs(r.lat)<=90 && Math.abs(r.lon)<=180){
+    map.setView([r.lat, r.lon], r.z);
+  } else {
+    err.className="err"; err.textContent="Couldn't read a location from that (use lat,lon or a full Google Maps URL).";
+  }
+}
+document.getElementById('gotoBtn').onclick=gotoLoc;
+document.getElementById('goto').addEventListener('keydown',e=>{ if(e.key==='Enter') gotoLoc(); });
+
+map.on('click', e=>{
+  const ll=[+e.latlng.lat.toFixed(6), +e.latlng.lng.toFixed(6)];
+  if(tool==='start'){ S.start=ll; placeStart(); setTool(null); }
+  else if(tool==='finish'){ S.finish=ll; placeFinish(); setTool(null); }
+  else if(tool==='sector'){ if(S.sectors.length<MAX_SECTORS){ S.sectors.push(ll); placeSectors(); } }
+  else if(tool==='startdir'){ if(S.start){ S.startHead=+bearing(S.start,ll).toFixed(1); drawArrows(); setTool(null); } }
+  else if(tool==='finishdir'){ if(S.finish){ S.finishHead=+bearing(S.finish,ll).toFixed(1); drawArrows(); setTool(null); } }
+  else if(tool==='pitE'){ S.pitE=ll; placePit(); setTool(null); }
+  else if(tool==='pitSF'){ S.pitSF=ll; placePit(); setTool(null); }
+  else if(tool==='pitX'){ S.pitX=ll; placePit(); setTool(null); }
+  refresh();
+});
+
+function mk(ll,color,label,drag){ var m=L.marker(ll,{icon:icon(color,label),draggable:true}).addTo(map);
+  m.on('drag',ev=>{ drag([+ev.latlng.lat.toFixed(6),+ev.latlng.lng.toFixed(6)]); }); return m; }
+function placeStart(){ if(M.start) map.removeLayer(M.start);
+  M.start=mk(S.start,'#39d353', mode==='circuit'?'SF':'S', ll=>{S.start=ll;drawArrows();refresh();}); }
+function placeFinish(){ if(M.finish) map.removeLayer(M.finish);
+  M.finish=mk(S.finish,'#ff5252','F', ll=>{S.finish=ll;drawArrows();refresh();}); }
+function placeSectors(){ M.sectors.forEach(m=>map.removeLayer(m)); M.sectors=[];
+  S.sectors.forEach((ll,i)=>{ M.sectors.push(mk(ll,'#4d9bff',String(i+1), p=>{S.sectors[i]=p;refresh();})); }); }
+function placePit(){
+  [['pitE','E'],['pitSF','P'],['pitX','X']].forEach(([k,lab])=>{
+    if(M[k]){ map.removeLayer(M[k]); M[k]=null; }
+    if(S[k]) M[k]=mk(S[k],'#b06dff',lab, p=>{S[k]=p;refresh();});
+  });
+}
+function arrow(from,headDeg,color){
+  const toR=Math.PI/180, shaftLen=0.00065, barbLen=0.00024;
+  // point `dist` degrees from (lat,lon) along compass bearing `brg`
+  function dest(lat,lon,brg,dist){
+    return [lat + Math.cos(brg*toR)*dist,
+            lon + Math.sin(brg*toR)*dist/Math.cos(lat*toR)];
+  }
+  const tip=dest(from[0],from[1],headDeg,shaftLen);
+  const shaft=L.polyline([from,tip],{color:color,weight:3,opacity:.95});
+  // two barbs pointing back from the tip (~28° off the reverse direction)
+  const bl=dest(tip[0],tip[1],headDeg+152,barbLen);
+  const br=dest(tip[0],tip[1],headDeg-152,barbLen);
+  const head=L.polyline([bl,tip,br],{color:color,weight:3,opacity:.95});
+  return L.layerGroup([shaft,head]).addTo(map);
+}
+function drawArrows(){
+  if(M.startArrow){map.removeLayer(M.startArrow);M.startArrow=null;}
+  if(M.finishArrow){map.removeLayer(M.finishArrow);M.finishArrow=null;}
+  if(S.start&&S.startHead!=null) M.startArrow=arrow(S.start,S.startHead,'#ffb000');
+  if(mode==='stage'&&S.finish&&S.finishHead!=null) M.finishArrow=arrow(S.finish,S.finishHead,'#ffb000');
+}
+
+function renderSectors(){
+  const ol=document.getElementById('sectorList'); ol.innerHTML="";
+  S.sectors.forEach((ll,i)=>{ const li=document.createElement('li');
+    li.innerHTML=`<div class="slist"><span class="coord">${ll[0].toFixed(5)}, ${ll[1].toFixed(5)}</span>
+      <span><button class="mini" data-up="${i}">↑</button>
+      <button class="mini" data-dn="${i}">↓</button>
+      <button class="mini" data-del="${i}">✕</button></span></div>`;
+    ol.appendChild(li); });
+  document.getElementById('sectorHint').textContent =
+    S.sectors.length? `${S.sectors.length}/8 — order = split order.` : "None yet.";
+  ol.querySelectorAll('[data-up]').forEach(b=>b.onclick=()=>{const i=+b.dataset.up;
+    if(i>0){[S.sectors[i-1],S.sectors[i]]=[S.sectors[i],S.sectors[i-1]];placeSectors();refresh();}});
+  ol.querySelectorAll('[data-dn]').forEach(b=>b.onclick=()=>{const i=+b.dataset.dn;
+    if(i<S.sectors.length-1){[S.sectors[i+1],S.sectors[i]]=[S.sectors[i],S.sectors[i+1]];placeSectors();refresh();}});
+  ol.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{S.sectors.splice(+b.dataset.del,1);placeSectors();refresh();});
+}
+
+function dirPill(id,head){ const el=document.getElementById(id);
+  if(head==null){ el.className="pill unset"; el.textContent="none"; }
+  else { el.className="pill set"; el.textContent=head.toFixed(1)+"°"; } }
+
+let flashTimer=null;
+function flash(msg){ const e=document.getElementById('err'); e.className="err ok"; e.textContent=msg;
+  clearTimeout(flashTimer); flashTimer=setTimeout(()=>{e.textContent="";e.className="err";},1500); }
+
+function pitArray(){
+  if(S.pitE&&S.pitSF&&S.pitX) return [S.pitE,S.pitSF,S.pitX];
+  return null;
+}
+
+function refresh(){
+  document.getElementById('startCoord').textContent  = S.start ? `${S.start[0].toFixed(6)}, ${S.start[1].toFixed(6)}` : "—";
+  document.getElementById('finishCoord').textContent = S.finish? `${S.finish[0].toFixed(6)}, ${S.finish[1].toFixed(6)}` : "—";
+  dirPill('startDirPill',S.startHead); dirPill('finishDirPill',S.finishHead);
+  var pc=document.getElementById('pitCoord');
+  if(pc){ var n=(S.pitE?1:0)+(S.pitSF?1:0)+(S.pitX?1:0);
+    pc.textContent = n===0 ? "—" : `${n}/3 set` + (n===3?" ✓":" (need all 3)"); }
+  renderSectors();
+  const name=document.getElementById('name').value.trim();
+  const width=parseFloat(document.getElementById('width').value);
+  const code=document.getElementById('code'); const err=document.getElementById('err');
+  err.className="err"; err.textContent="";
+  try{
+    if(mode==='stage'){
+      if(!S.start||!S.finish||!name){ code.value=""; return; }
+      if(S.startHead==null){ code.value=""; err.textContent="Set a crossing direction on the Start line."; return; }
+      if(S.finishHead==null){ code.value=""; err.textContent="Set a crossing direction on the Finish line."; return; }
+      code.value=encodeStage({ name, width_m:width,
+        start:S.start, start_head:S.startHead,
+        finish:S.finish, finish_head:S.finishHead, sectors:S.sectors });
+    } else {
+      if(!S.start||!name){ code.value=""; return; }
+      if(S.startHead==null){ code.value=""; err.textContent="Circuit needs a crossing direction on the S/F line."; return; }
+      var pit=pitArray();
+      var pitCount=(S.pitE?1:0)+(S.pitSF?1:0)+(S.pitX?1:0);
+      if(pitCount>0 && pit==null){ code.value=""; err.textContent="Pit lane needs all 3 points (or clear them)."; return; }
+      code.value=encodeCircuit({ name, width_m:width,
+        sf:S.start, sf_head:S.startHead, sectors:S.sectors, pit:pit });
+    }
+  }catch(ex){ code.value=""; err.textContent=String(ex); }
+}
+
+applyMode();   // initial render (stage)
+</script>
+</body>
+</html>

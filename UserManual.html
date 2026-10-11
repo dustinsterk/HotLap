@@ -138,6 +138,7 @@ tr:last-child td{border-bottom:none}
 <ul>
   <li><b>Select Track</b> — lists <b>nearby point-to-point tracks</b> from the database (only P2P tracks appear here). If none are nearby you'll see "No tracks found" — use Mark Track instead.</li>
   <li><b>Mark Track</b> — build a course on the watch. Ideal on an autocross <b>course walk</b> or a rally <b>recon</b> pass.</li>
+  <li><b>Custom Tracks</b> — your saved courses: ones you marked on the watch, plus any you built in the <a href="#editor">Track Editor</a> and imported.</li>
 </ul>
 
 <h3>Marking a course</h3>
@@ -183,6 +184,33 @@ tr:last-child td{border-bottom:none}
 <h2 id="viewtrack">View Track</h2>
 <p>Once a start/finish line is set — from a database track or one you dropped — <b>Menu → View Track</b> opens a satellite map of that track on your phone, with its points shown as coloured dots: red start/finish, blue sectors, and orange/purple/green pit entry / pit S/F / pit exit. For a <b>point-to-point</b> track the red dot is the <b>start</b> and a green <b>F</b> marks the separate <b>finish</b>. It's a quick way to confirm you picked the right layout and to see exactly where the points sit.</p>
 <p>Your watch and phone need to be connected (it opens the page in your phone's browser); if the phone isn't connected the watch says so. This is your own device, so the map shows the track's real location.</p>
+</section>
+
+<section id="editor">
+<h2>Build your own tracks (Track Editor)</h2>
+<p>The <b>HotLap Track Editor</b> is a web page (<a href="https://www.thesterk.com/HotLap/TrackEditor.html">open it here</a>) that lets you build your own <b>circuit</b> or <b>point-to-point</b> track on a satellite map and load it onto your watch — no driving the course to mark it. It's ideal for a track that isn't in the database, or for autocross/rally courses you want to lay out precisely in advance.</p>
+
+<h3>Building a track</h3>
+<ul>
+  <li>Choose <b>Circuit</b> (laps a closed loop) or <b>Stage</b> (point-to-point, A→B) at the top.</li>
+  <li>Use <b>Go to location</b> to jump the map to your track — type a <b>lat, lon</b> or paste a <b>Google Maps link</b>.</li>
+  <li>Click the map to place points, then drag to fine-tune: a <b>Circuit</b> needs one start/finish line; a <b>Stage</b> needs a separate start and finish. Add ordered <b>sectors</b> (up to 8) in between.</li>
+  <li><b>Crossing direction is required on every line.</b> Pick it by clicking a point just <b>ahead in the direction of travel</b>; an arrow shows the way the line counts as crossed.</li>
+  <li><b>Circuit pit lane (optional):</b> set all three pit points — entry, pit start/finish, exit — to enable pit timing, or leave them off.</li>
+  <li>Set the <b>catch width</b> (default 30&nbsp;m) and a <b>name</b> (letters/numbers, up to 24 characters).</li>
+  <li>The editor shows an <b>import code</b> (it starts with <code>HLT</code>). Click <b>Copy</b>.</li>
+</ul>
+
+<h3>Importing to your watch</h3>
+<p>Paste the code into HotLap's <b>Import Track</b> setting — the same place you change any app setting:</p>
+<ul>
+  <li><b>On your phone</b> (Bluetooth): Garmin Connect / Connect IQ app → <b>HotLap</b> → <b>Settings</b> → <b>Import Track</b> → paste → save.</li>
+  <li><b>On a computer</b> (USB): plug the watch in, open <b>Garmin Express</b> → your device → <b>IQ Apps</b> → <b>HotLap</b> settings → <b>Import Track</b> → paste.</li>
+</ul>
+<p>On the next sync (or the next time you open the app) HotLap decodes the code and adds the track to <b>Custom Tracks</b>; you'll see an <b>"Imported: &lt;name&gt;"</b> confirmation on the watch. Then set the matching <b>Lap Method</b> (Circuit or Point-to-Point) and choose it under <b>Menu → Custom Tracks</b>.</p>
+<div class="tip"><b>Custom Tracks is filtered by Lap Method:</b> in <b>Circuit</b> mode you see your imported circuits; in <b>Point-to-Point</b> mode you see your stage courses (and anything you marked on the watch). Set the Lap Method first and your track will be in the list.</div>
+<div class="tip"><b>Re-importing the same code:</b> HotLap ignores a code it has already imported, so it won't create duplicates every time your watch syncs. To import the identical code again — for example after you deleted the track — <b>clear the Import Track field first</b>, then paste it again. Any change in the editor (even a new name) produces a new code that imports straight away.</div>
+<div class="tip">App settings only appear for an app installed from the <b>Connect IQ Store</b> (including beta installs). A <b>sideloaded</b> build won't show the Import Track field — publish or beta-test it to use importing.</div>
 </section>
 
 <section id="request">
