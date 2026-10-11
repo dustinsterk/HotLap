@@ -222,9 +222,25 @@ function bearing(a,b){
 }
 
 /* ===================== map + state ===================== */
-const map=L.map('map').setView([41.9286,-73.3810],15);
+const map=L.map('map').setView([20,0],2);   // whole-world default until geolocation resolves
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
   {maxZoom:19, maxNativeZoom:19, attribution:'Imagery © Esri, Maxar, Earthstar Geographics'}).addTo(map);
+
+// On open, center on the viewer's current location (needs HTTPS + permission; some
+// browsers block geolocation on file://). If denied/unavailable, keep the default
+// view above. Skipped once the user has placed anything, so it never yanks the map
+// away mid-edit.
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(
+    function(pos){
+      if (!S.start && !S.finish && S.sectors.length === 0) {
+        map.setView([pos.coords.latitude, pos.coords.longitude], 16);
+      }
+    },
+    function(){ /* denied / unavailable -> keep default view */ },
+    { enableHighAccuracy:true, timeout:8000, maximumAge:60000 }
+  );
+}
 
 let mode='stage';              // 'stage' | 'circuit'
 let tool=null;
